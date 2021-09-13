@@ -5,6 +5,12 @@ import UserData from "./UserData.json";
 import { useHistory } from 'react-router-dom';
 
 const Login = () => {
+     const Container = styled.div`
+        display: flex;
+        justify-content: center;
+
+    `;
+
     const Wrapper = styled.div`
         display: flex;
         justify-content: center;
@@ -31,6 +37,7 @@ const Login = () => {
     const Logo = styled.div`
         padding: 15px 0 15px 0;
         font-size: 50px;
+        font-weight: 500;
     `
 
     const DivInput = styled.div`
@@ -42,6 +49,7 @@ const Login = () => {
         width: 50px;
         height: 30px;
         font-size: 20px;
+        font-weight: 500;
     `
 
     const Input = styled.input`
@@ -56,55 +64,56 @@ const Login = () => {
         display: block;
         width: 300px;
         height: 50px;
+        font-size: 20px;
+        font-weight: 500;
     `;
 
     // id, pw 두 개를 입력 받으므로 쌍으로 useState 만들어줌
-    const [inputs, setInputs] = useState({
-        id: "",
-        pw: ""
-    });
-
-    const {id, pw} = inputs;
+    const [id, setId] = useState("");
+    const [pw, setPw] = useState("");
 
     // input form에서 문자 바뀌면 useState 바꿔줌
-    const onChange = (e) =>{
-        const {value, name} = e.target;
-        setInputs({
-            ...inputs,
-            [name]: value
-        });
-    };
+    const handleId = (e) =>{
+        setId(e.target.value);
+    }
+
+    const handlePw = (e) =>{
+        setPw(e.target.value);
+    }
 
     // useHistory를 사용하여 특정 라우트로 보낼 수 있음
     const history = useHistory();
 
+    // id와 pw가 계정과 일치하면 권한 세션 주고 본문으로 이동 일치하지 않으면 실패
     const submit = () =>{
-        if(inputs.id === UserData.id && inputs.pw === UserData.pw){
+        if(id === UserData.id && pw === UserData.pw){
             sessionStorage.setItem("isAuthorized","true");
             alert("로그인 성공");
-            history.push("/home");
+            history.push("/");
         }else{
             alert("로그인 실패");
         }
     };
 
     return(
-        <Wrapper>
-            <Inner>
-                <Context>
-                    <Logo>File Viewer</Logo>
-                    <DivInput>
-                        <Text>ID</Text>
-                        <Input name = "id" placeholder = "ID" value = {id} onChange = {onChange}/>
-                    </DivInput>
-                    <DivInput>
-                        <Text>PW</Text>
-                        <Input name = "pw" placeholder = "PW" value = {pw} onChange = {onChange}/>
-                    </DivInput>
-                    <Button onClick = {submit} onClick = {submit}>Login</Button>
-                </Context>
-            </Inner>
-        </Wrapper>
+        <Container>
+            <Wrapper>
+                <Inner>
+                    <Context>
+                        <Logo>File Viewer</Logo>
+                        <DivInput>
+                            <Text>ID</Text>
+                            <Input type = "text" name = "id" placeholder = "ID" value = {id} onChange = {handleId}/>
+                        </DivInput>
+                        <DivInput>
+                            <Text>PW</Text>
+                            <Input type = "password" name = "pw" placeholder = "PW" value = {pw} onChange = {handlePw}/>
+                        </DivInput>
+                        <Button onClick = {submit} onClick = {submit}>Login</Button>
+                    </Context>
+                </Inner>
+            </Wrapper>
+        </Container>
     );
 }
 

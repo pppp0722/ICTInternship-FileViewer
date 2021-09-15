@@ -7,8 +7,6 @@ ICT Internship(2021) file viewer website front-end & back-end
 <br/>
 ❌) php -> spring으로 전환, 영상 뷰어
 
-<br/>
-<br/>
 # 전체 UI
 Login>
 ![login](https://user-images.githubusercontent.com/60428537/133401063-79e6a74e-34f3-4b44-9028-67b2959e045f.PNG)

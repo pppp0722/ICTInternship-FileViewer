@@ -89,14 +89,14 @@ const Header = (props) => {
             </Top>
             <Bottom>
                 <MenuButton name = "home" onClick = {() => menuButtonClick("home")}>Home</MenuButton>
-                <MenuButton name = "menu_1" onClick = {() => menuButtonClick("menu_1")}>크로마키 소스</MenuButton>
-                <MenuButton name = "menu_2" onClick = {() => menuButtonClick("menu_2")}>오버레이 소스</MenuButton>
-                <MenuButton name = "menu_3" onClick = {() => menuButtonClick("menu_3")}>애니메이션 소스</MenuButton>
-                <MenuButton name = "menu_4" onClick = {() => menuButtonClick("menu_4")}>움짤, 짤모음</MenuButton>
-                <MenuButton name = "menu_5" onClick = {() => menuButtonClick("menu_5")}>전환효과, 모션그래픽</MenuButton>
-                <MenuButton name = "menu_6" onClick = {() => menuButtonClick("menu_6")}>효과음, 브금</MenuButton>
-                <MenuButton name = "menu_7" onClick = {() => menuButtonClick("menu_7")}>쇼크웨이브, 잉크매트</MenuButton>
-                <MenuButton name = "menu_8" onClick = {() => menuButtonClick("menu_8")}>MR 소스</MenuButton>
+                <MenuButton name = "chromakey" onClick = {() => menuButtonClick("chromakey")}>크로마키 소스</MenuButton>
+                <MenuButton name = "overlay" onClick = {() => menuButtonClick("overlay")}>오버레이 소스</MenuButton>
+                <MenuButton name = "animation" onClick = {() => menuButtonClick("animation")}>애니메이션 소스</MenuButton>
+                <MenuButton name = "meme" onClick = {() => menuButtonClick("meme")}>움짤, 짤모음</MenuButton>
+                <MenuButton name = "transition_motion" onClick = {() => menuButtonClick("transition_motion")}>전환효과, 모션그래픽</MenuButton>
+                <MenuButton name = "bgm" onClick = {() => menuButtonClick("bgm")}>효과음, 브금</MenuButton>
+                <MenuButton name = "shockwave_inkmat" onClick = {() => menuButtonClick("shockwave_inkmat")}>쇼크웨이브, 잉크매트</MenuButton>
+                <MenuButton name = "mr" onClick = {() => menuButtonClick("mr")}>MR 소스</MenuButton>
             </Bottom>
         </Wrapper>
     );

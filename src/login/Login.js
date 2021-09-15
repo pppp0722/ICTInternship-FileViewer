@@ -37,7 +37,7 @@ const Login = () => {
 
     const Logo = styled.div`
         padding: 15px 0 15px 0;
-        font-size: 50px;
+        font-size: 46px;
         font-weight: 500;
     `
 
@@ -113,7 +113,7 @@ const Login = () => {
             <Wrapper>
                 <Inner>
                     <Context>
-                        <Logo>File Viewer</Logo>
+                        <Logo>📁File Viewer</Logo>
                         <DivInput>
                             <Text>ID</Text>
                             <Input type = "text" name = "id" placeholder = "ID" value = {id} onChange = {handleId}/>

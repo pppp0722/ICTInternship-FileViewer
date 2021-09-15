@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
+// 썸네일의 경우 레이아웃을 위해 너비 200px, 높이 100px로 한 열에 5개씩 들어감
 const Thumbnail = (props) => {
-    const Wrapper = styled.div`
+    const Img = styled.img`
         display: inline-block;
         cursor: pointer;
         width: 200px;
@@ -13,14 +14,13 @@ const Thumbnail = (props) => {
         line-height: 100px;
     `
 
-    // 어떤 썸네일을 선택했느냐에 따라 부모의 데이터 값 변경
-    const setData = () => {
-        props.setData(props.name);
+    const thumbnailClick = () => {
+        props.setSelected(props.width_height_url);
         props.setDetail(true);
     };
 
     return(
-        <Wrapper onClick = {() => setData()}>{props.name}</Wrapper>
+        <Img src = {props.width_height_url[2]} onClick = {thumbnailClick}/>
     );
 }
 

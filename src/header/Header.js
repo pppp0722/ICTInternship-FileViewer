@@ -84,7 +84,7 @@ const Header = (props) => {
     return(
         <Wrapper>
             <Top>
-                <Logo onClick = {toHome}>File Viewer</Logo>
+                <Logo onClick = {toHome}>📁File Viewer</Logo>
                 <Button onClick = {logout}>Logout</Button>
             </Top>
             <Bottom>

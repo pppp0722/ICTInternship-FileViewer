@@ -42,8 +42,7 @@ body에서는 유의사항을 알려주고, 메뉴를 통하여 원하는 디렉
 과도하게 큰 이미지, 영상을 방지하기 위하여 최대 너비, 높이보다 큰 이미지의 경우 이미지 가로세로 비율에 맞게 줄여서 나타냅니다.<br/>
 나머지 이미지, 영상은 소스의 크기를 파악하기 위하여 원본 픽셀로 나타내며 X 버튼을 클릭하여 모달창을 닫을 수 있습니다.<br/>
 <br/>
-<img src = "https://user-images.githubusercontent.com/60428537/133565676-e8aa580e-f1c0-45a9-98a3-dba7323ace45.PNG" width="450px" height="253px"/>
-<img src = "https://user-images.githubusercontent.com/60428537/133565759-d9ba7f83-b2f7-493d-b9ab-bbafaec572d2.PNG" width="450px" height="253px"/>
+<img src = "https://user-images.githubusercontent.com/60428537/133565676-e8aa580e-f1c0-45a9-98a3-dba7323ace45.PNG" width="450px" height="253px"/><img src = "https://user-images.githubusercontent.com/60428537/133565759-d9ba7f83-b2f7-493d-b9ab-bbafaec572d2.PNG" width="450px" height="253px"/>
 <br/>
 
 ### 🎨Change Background

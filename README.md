@@ -1,7 +1,7 @@
 # ICTInternship-FileViewer(React + Spring)
 ### ICT Internship(2021) file viewer website front-end & back-end
 ***
-#### File Viewer Website
+# File Viewer Website
 <br/>
 해당 프로젝트는 디자인 팀의 요청사항으로 서버 안에 저장된 각종 이미지, 영상 소스들을 쉽게 볼 수 있고, 다운받을 수 있는 웹사이트를 개발하는 프로젝트입니다.
 <br/>
@@ -10,7 +10,8 @@
 ❌) php -> spring으로 전환, 다운로드 기능, 업로드 기능(미정)
 <br/>
 <br/>
-## 프로젝트 기능
+***
+# 프로젝트 기능
 <br/>
 #### 🔑Login
 <br/>

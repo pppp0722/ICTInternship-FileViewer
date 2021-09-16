@@ -9,20 +9,20 @@
 ❌) php -> spring으로 전환, 영상 뷰어
 
 # 전체 UI
-Login
+Login<br/>
 <img src = "https://user-images.githubusercontent.com/60428537/133401063-79e6a74e-34f3-4b44-9028-67b2959e045f.PNG" width="800px" height="450x"/><br/>
 
-Home
+Home<br/>
 <img src = "https://user-images.githubusercontent.com/60428537/133565411-174f5022-6dc6-465c-ac2b-d4daf627ad98.PNG" width="800px" height="450px"/><br/>
 
-Storage
+Storage<br/>
 <img src = "https://user-images.githubusercontent.com/60428537/133565478-c98eeb25-ff7b-4bbe-ac00-fec2246e69ae.PNG" width="800px" height="450px"/><br/>
 
-Detail View
+Detail View<br/>
 <img src = "https://user-images.githubusercontent.com/60428537/133565676-e8aa580e-f1c0-45a9-98a3-dba7323ace45.PNG" width="400px" height="225px"/>
 <img src = "https://user-images.githubusercontent.com/60428537/133565759-d9ba7f83-b2f7-493d-b9ab-bbafaec572d2.PNG" width="400px" height="225px"/><br/>
 
-Change Background
+Change Background<br/>
 <img src = "https://user-images.githubusercontent.com/60428537/133565831-451d7fa1-8697-4fdf-8ef6-72e90b19e3c1.PNG" width="266px" height="150px"/>
 <img src = "https://user-images.githubusercontent.com/60428537/133565907-5f0ecdbb-97ce-4519-96ef-b5044524348e.PNG" width="266px" height="150px"/>
 <img src = "https://user-images.githubusercontent.com/60428537/133566009-5caa8fa0-1392-4b68-a3bd-44fea54cb57e.PNG" width="266px" height="150px"/><br/>

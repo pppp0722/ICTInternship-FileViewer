@@ -17,11 +17,13 @@
 세션이 없으면 모든 URL 접근을 Login으로 이동하므로, 로그인을 성공하여야 본문으로 이동할 수 있습니다.<br/><br/>
 <img src = "https://user-images.githubusercontent.com/60428537/133401063-79e6a74e-34f3-4b44-9028-67b2959e045f.PNG" width="100%"/>
 <br/>
+<br/>
 ## 🏠Home
 header 부분 로고와 Home 버튼을 클릭하여 Home으로 이동할 수 있습니다.<br/>
 Logout 버튼을 통하여 권한 세션을 없앤 뒤, 로그인 화면으로 이동합니다.<br/>
 body에서는 유의사항을 알려주고, 메뉴를 통하여 원하는 디렉토리로 이동합니다.<br/><br/>
 <img src = "https://user-images.githubusercontent.com/60428537/133565411-174f5022-6dc6-465c-ac2b-d4daf627ad98.PNG" width="100%"/>
+<br/>
 <br/>
 ## 📁Storage
 저장소에서는 썸네일을 통해 해당 메뉴의 서버 디렉토리에 적재된 사진 및 영상 파일들을 보여줍니다.<br/>
@@ -29,11 +31,13 @@ body에서는 유의사항을 알려주고, 메뉴를 통하여 원하는 디렉
 영상의 경우, 썸네일 위에 재생이 가능한 영상임을 표시하기 위해 재생 아이콘을 넣었습니다.<br/><br/>
 <img src = "https://user-images.githubusercontent.com/60428537/133565478-c98eeb25-ff7b-4bbe-ac00-fec2246e69ae.PNG" width="100%"/>
 <br/>
+<br/>
 ## 🔎Detail View
 썸네일을 클릭하면 해당 이미지, 영상을 자세히볼 수 있고 다운로드도 받을 수 있는 모달 창을 띄웁니다.<br/>
 과도하게 큰 이미지, 영상을 방지하기 위하여 최대 너비, 높이보다 큰 이미지의 경우 이미지 가로세로 비율에 맞게 줄여서 나타냅니다.<br/>
 나머지 이미지, 영상은 소스의 크기를 파악하기 위하여 원본 픽셀로 나타내며 X 버튼을 클릭하여 모달창을 닫을 수 있습니다.<br/><br/>
 <img src = "https://user-images.githubusercontent.com/60428537/133565676-e8aa580e-f1c0-45a9-98a3-dba7323ace45.PNG" width="48%"/>  <img src = "https://user-images.githubusercontent.com/60428537/133565759-d9ba7f83-b2f7-493d-b9ab-bbafaec572d2.PNG" width="48%"/>
+<br/>
 <br/>
 ## 🎨Change Background
 배경색과 이미지, 영상 소스의 색상이 비슷하여 식별이 힘든 상황을 방지하기 위하여 배경 색상을 변경할 수 있는 기능입니다.<br/>

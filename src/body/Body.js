@@ -26,17 +26,18 @@ const Body = (props) => {
         margin: auto;
         width: 1160px;
         background-color: #FFF;
+        min-height: 640px;
     `
 
     const Text1 = styled.div`
-        margin: 20px 0 20px 16px;
+        margin: 20px 0 20px 50px;
         display: inline-block;
         font-size: 50px;
         font-weight: 500;
     `
 
     const Text2 = styled.div`
-        margin: 20px 0 20px 16px;
+        margin: 20px 0 20px 50px;
         display: inline-block;
         font-size: 35px;
     `
@@ -54,8 +55,8 @@ const Body = (props) => {
             const first_divided = res.split(',');
             first_divided.pop();
             
-            // index => 0 width, 1 height, 2 url
-            const width_height_url = []; 
+            // status[] => 0: width, 1: height, 2: url, 3: isVideo
+            const status = []; 
 
             // width, height, url로 split한 배열 담아주기
             for(let i=0; i<first_divided.length; i++){
@@ -63,14 +64,14 @@ const Body = (props) => {
                 const second_divided = first_divided[i].split('!');
                 
                 // 사이즈가 1350, 650이 넘는다면, 너비는 1350, 높이는 650이 넘어가지 않도록 원본 너비, 높이 비율 유지하면서 조정 
-                if(Number(second_divided[0]) > 1350 || Number(second_divided[1]) > 650){
+                if(Number(second_divided[0]) > 1150 || Number(second_divided[1]) > 650){
                    
                     second_divided[0] = Number(second_divided[0]);
                     second_divided[1] = Number(second_divided[1]);
                   
-                    if(second_divided[0] > 1350){
-                        second_divided[1] = second_divided[1] * 1350 / second_divided[0];
-                        second_divided[0] = second_divided[0] * 1350 / second_divided[0];
+                    if(second_divided[0] > 1150){
+                        second_divided[1] = second_divided[1] * 1150 / second_divided[0];
+                        second_divided[0] = second_divided[0] * 1150 / second_divided[0];
                     }
 
                     if(second_divided[1] > 650){
@@ -82,14 +83,16 @@ const Body = (props) => {
                     second_divided[1] = String(Math.round(second_divided[1]));
                 }
 
+                second_divided.push(second_divided[2].indexOf("@") !== -1 ? true : false);
+
                 // 스플릿한 배열 width_height_url 배열에 담아줌
-                width_height_url.push(second_divided);
+                status.push(second_divided);
             }
 
             // map을 사용하여 url 리스트에 들어있는 원소 개수 만큼 썸네일 컴포넌트 생성
             // 
             // 디테일 뷰를 활용하기 위해서 selected와 detail 같이 전달
-            const urlList = width_height_url.map((w_h_u) => (<Thumbnail width_height_url = {w_h_u} setSelected = {setSelected} setDetail = {setDetail}/>));
+            const urlList = status.map((s) => (<Thumbnail status = {s} setSelected = {setSelected} setDetail = {setDetail}/>));
 
             // return에서 사용하기 위하여 state에 썸네일 컴포넌트 넣어줌
             setThumbnailList(urlList);

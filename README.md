@@ -19,10 +19,10 @@ Storage
 ![storage](https://user-images.githubusercontent.com/60428537/133565478-c98eeb25-ff7b-4bbe-ac00-fec2246e69ae.PNG)
 
 Detail View
-![detailview_image](https://user-images.githubusercontent.com/60428537/133565676-e8aa580e-f1c0-45a9-98a3-dba7323ace45.PNG)
-![detailview_video](https://user-images.githubusercontent.com/60428537/133565759-d9ba7f83-b2f7-493d-b9ab-bbafaec572d2.PNG)
+![detailview_image](https://user-images.githubusercontent.com/60428537/133565676-e8aa580e-f1c0-45a9-98a3-dba7323ace45.PNG) {: width="50%"}
+![detailview_video](https://user-images.githubusercontent.com/60428537/133565759-d9ba7f83-b2f7-493d-b9ab-bbafaec572d2.PNG) {: width="50%"}
 
 Change Background
-![detailview_grey](https://user-images.githubusercontent.com/60428537/133565831-451d7fa1-8697-4fdf-8ef6-72e90b19e3c1.PNG)
-![detailview_white](https://user-images.githubusercontent.com/60428537/133565907-5f0ecdbb-97ce-4519-96ef-b5044524348e.PNG)
-![detailview_black](https://user-images.githubusercontent.com/60428537/133566009-5caa8fa0-1392-4b68-a3bd-44fea54cb57e.PNG)
+![detailview_grey](https://user-images.githubusercontent.com/60428537/133565831-451d7fa1-8697-4fdf-8ef6-72e90b19e3c1.PNG) {: width="33%"}
+![detailview_white](https://user-images.githubusercontent.com/60428537/133565907-5f0ecdbb-97ce-4519-96ef-b5044524348e.PNG) {: width="50%"}
+![detailview_black](https://user-images.githubusercontent.com/60428537/133566009-5caa8fa0-1392-4b68-a3bd-44fea54cb57e.PNG) {: width="50%"}

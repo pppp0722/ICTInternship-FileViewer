@@ -42,7 +42,8 @@ body에서는 유의사항을 알려주고, 메뉴를 통하여 원하는 디렉
 과도하게 큰 이미지, 영상을 방지하기 위하여 최대 너비, 높이보다 큰 이미지의 경우 이미지 가로세로 비율에 맞게 줄여서 나타냅니다.<br/>
 나머지 이미지, 영상은 소스의 크기를 파악하기 위하여 원본 픽셀로 나타내며 X 버튼을 클릭하여 모달창을 닫을 수 있습니다.<br/>
 <br/>
-<img src = "https://user-images.githubusercontent.com/60428537/133565676-e8aa580e-f1c0-45a9-98a3-dba7323ace45.PNG" width="450px" height="253px"/><img src = "https://user-images.githubusercontent.com/60428537/133565759-d9ba7f83-b2f7-493d-b9ab-bbafaec572d2.PNG" width="450px" height="253px"/>
+<img src = "https://user-images.githubusercontent.com/60428537/133565676-e8aa580e-f1c0-45a9-98a3-dba7323ace45.PNG" width="450px" height="253px"/>
+<img src = "https://user-images.githubusercontent.com/60428537/133565759-d9ba7f83-b2f7-493d-b9ab-bbafaec572d2.PNG" width="450px" height="253px"/>
 <br/>
 
 ### 🎨Change Background
@@ -50,7 +51,5 @@ body에서는 유의사항을 알려주고, 메뉴를 통하여 원하는 디렉
 배경색과 이미지, 영상 소스의 색상이 비슷하여 식별이 힘든 상황을 방지하기 위하여 배경 색상을 변경할 수 있는 기능입니다.<br/>
 상단 3가지 버튼을 통하여 투명한 회색, 흰색, 검은색의 바탕으로 이미지, 영상을 열람할 수 있습니다.<br/>
 <br/>
-<img src = "https://user-images.githubusercontent.com/60428537/133565831-451d7fa1-8697-4fdf-8ef6-72e90b19e3c1.PNG" width="300px" height="169px"/>
-<img src = "https://user-images.githubusercontent.com/60428537/133565907-5f0ecdbb-97ce-4519-96ef-b5044524348e.PNG" width="300px" height="169px"/>
-<img src = "https://user-images.githubusercontent.com/60428537/133566009-5caa8fa0-1392-4b68-a3bd-44fea54cb57e.PNG" width="300px" height="169px"/>
+<img src = "https://user-images.githubusercontent.com/60428537/133565831-451d7fa1-8697-4fdf-8ef6-72e90b19e3c1.PNG" width="300px" height="169px"/><img src = "https://user-images.githubusercontent.com/60428537/133565907-5f0ecdbb-97ce-4519-96ef-b5044524348e.PNG" width="300px" height="169px"/><img src = "https://user-images.githubusercontent.com/60428537/133566009-5caa8fa0-1392-4b68-a3bd-44fea54cb57e.PNG" width="300px" height="169px"/>
 <br/>

@@ -53,7 +53,9 @@ body에서는 유의사항을 알려주고, 메뉴를 통하여 원하는 디렉
 (-) 버튼으로 축소, (+) 버튼으로 확대 가능하며 최대 크기를 벗어날 수 없습니다.<br/><br/>
 가운데 현재 배율이 표시된 버튼을 클릭하면 원본 크기로 돌아갑니다.<br/><br/>
 <img src = "https://user-images.githubusercontent.com/60428537/133726295-eb7a2f8c-d512-4bcf-a94d-0000616e0665.PNG" width="32%"/> <img src = "https://user-images.githubusercontent.com/60428537/133726410-d2382aa8-42ab-4fe0-835a-9797a47e43ff.PNG" width="32%"/> <img src = "https://user-images.githubusercontent.com/60428537/133726352-090dba53-1b72-4c09-8c28-9abc4dc70111.PNG" width="32%"/>
-## �💾Download
+<br/>
+<br/>
+## 💾Download
 다운로드 버튼을 클릭하여 열람하고 있는 파일을 다운로드 받을 수 있습니다.<br/><br/>
 <img src = "https://user-images.githubusercontent.com/60428537/133726234-7b0380c3-ed8f-402b-aa32-99e7611da3dc.PNG" width="100%"/>
 <br/>

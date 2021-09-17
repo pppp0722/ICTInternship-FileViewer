@@ -50,6 +50,6 @@ body에서는 유의사항을 알려주고, 메뉴를 통하여 원하는 디렉
 <br/>
 ## 🔎Zoom In & Out
 이미지를 확대, 축소하여 열람할 수 있는 기능입니다.<br/><br/>
-- 버튼으로 축소, + 버튼으로 확대 가능하며 최대 크기를 벗어날 수 없습니다.<br/><br/>
+(-) 버튼으로 축소, (+) 버튼으로 확대 가능하며 최대 크기를 벗어날 수 없습니다.<br/><br/>
 가운데 현재 배율이 표시된 버튼을 클릭하면 원본 크기로 돌아갑니다.<br/><br/>
 <img src = "https://user-images.githubusercontent.com/60428537/133709786-c4eab8c2-75e6-4c6f-8ab9-5f8c09388a73.PNG" width="32%"/> <img src = "https://user-images.githubusercontent.com/60428537/133709822-5679e4d0-f062-4a28-b0e3-1b2e135baa7c.PNG" width="32%"/> <img src = "https://user-images.githubusercontent.com/60428537/133709855-c45941f9-5d2b-46e7-8232-b01d2d6d4f2f.PNG" width="32%"/>

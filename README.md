@@ -46,3 +46,10 @@ body에서는 유의사항을 알려주고, 메뉴를 통하여 원하는 디렉
 배경색과 이미지, 영상 소스의 색상이 비슷하여 식별이 힘든 상황을 방지하기 위하여 배경 색상을 변경할 수 있는 기능입니다.<br/><br/>
 상단 3가지 버튼을 통하여 투명한 회색, 흰색, 검은색의 바탕으로 이미지, 영상을 열람할 수 있습니다.<br/><br/>
 <img src = "https://user-images.githubusercontent.com/60428537/133565831-451d7fa1-8697-4fdf-8ef6-72e90b19e3c1.PNG" width="32%"/> <img src = "https://user-images.githubusercontent.com/60428537/133565907-5f0ecdbb-97ce-4519-96ef-b5044524348e.PNG" width="32%"/> <img src = "https://user-images.githubusercontent.com/60428537/133566009-5caa8fa0-1392-4b68-a3bd-44fea54cb57e.PNG" width="32%"/>
+<br/>
+<br/>
+## 🔎Zoom In & Out
+이미지를 확대, 축소하여 열람할 수 있는 기능입니다.<br/><br/>
+- 버튼으로 축소, + 버튼으로 확대 가능하며 최대 크기를 벗어날 수 없습니다.<br/><br/>
+가운데 현재 배율이 표시된 버튼을 클릭하면 원본 크기로 돌아갑니다.<br/><br/>
+<img src = "https://user-images.githubusercontent.com/60428537/133709786-c4eab8c2-75e6-4c6f-8ab9-5f8c09388a73.PNG" width="32%"/> <img src = "https://user-images.githubusercontent.com/60428537/133709822-5679e4d0-f062-4a28-b0e3-1b2e135baa7c.PNG" width="32%"/> <img src = "https://user-images.githubusercontent.com/60428537/133709855-c45941f9-5d2b-46e7-8232-b01d2d6d4f2f.PNG" width="32%"/>

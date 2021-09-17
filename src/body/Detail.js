@@ -3,11 +3,11 @@ import styled from 'styled-components';
 
 const Detail = (props) => {
     const [backgroundColor , setBackgroundColor] = useState("grey");
+    const [zoomLevel, setZoomLevel] = useState(1.0);
 
     // 고정시키고 주변 어둡게 해줘서 강조시킴
     // 부모의 detail 보여줄 것인지 boolean값이 true면 보여주고 false면 hidden
     const Wrapper = styled.div`
-        display: table-cell;
         position: fixed;
         top: 0;
         right: 0;
@@ -21,7 +21,13 @@ const Detail = (props) => {
     const Top = styled.div`
         height: 50px;
         text-align: center;
-        padding-left: 80px;
+    `
+
+    const ZoomButton = styled.button`
+        float: left;
+        width: 80px;
+        height: 50px;
+        font-size: 30px;
     `
 
     const ChangeButton = styled.button`
@@ -35,6 +41,7 @@ const Detail = (props) => {
         width: 80px;
         height: 50px;
         font-size: 30px;
+        margin-left: 160px;
     `
 
     const Context = styled.div`
@@ -49,12 +56,39 @@ const Detail = (props) => {
         text-align: center;
     `
     const Img = styled.img`
+        max-width: 1150px;
+        max-height: 650px;
     `
 
     const Video = styled.video`
         max-width: 1150px;
         max-height: 650px;
     `
+
+    const Empty = styled.div`
+        display: inline-block;
+        width: 240px;
+        height: 50px;
+    `
+
+    // 이미지 확대, 축소
+    const zoomControl = (name) => {
+        // +버튼이면 0.2 더하고 -버튼이면 0.2 감소
+        let after_level = name === "-" ? zoomLevel - 0.5 : name === "+" ? zoomLevel + 0.5 : 1;
+        // toFixed 함수를 사용하여 소수점 1자리 까지 반올림 (컴퓨터 소수계산은 작은 오차 있음)
+        let fixed_level = Math.round(after_level*10)/10
+
+
+        if(Number(props.selected[0]) * fixed_level <= 1150 && Number(props.selected[1]) * fixed_level <= 650){
+            setZoomLevel(fixed_level <= 0.5 ? 0.5 : fixed_level);
+        }
+    }
+
+    // 이미지의 식별을 위하여 배경 색상을 투명한 회색, 흰색, 검은색 선택 가능
+    const backgroundChange = (color) => {
+        setBackgroundColor(color);
+    }
+
 
     // 닫으면 부모의 디테일뷰 띄울 것인지 boolean값 false로 변경
     // 선택한 값 없음으로 변경
@@ -63,13 +97,17 @@ const Detail = (props) => {
         props.setSelected([]);
     }
 
-    const backgroundChange = (color) => {
-        setBackgroundColor(color);
-    }
-
     return(
         <Wrapper>
             <Top>
+                {!props.selected[3] ?
+                <div>
+                    <ZoomButton onClick = {() => zoomControl("-")}>-</ZoomButton>
+                    <ZoomButton onClick = {() => zoomControl("1")}>{zoomLevel}</ZoomButton>
+                    <ZoomButton onClick = {() => zoomControl("+")}>+</ZoomButton>
+                </div>
+                : <Empty/>}
+
                 <ChangeButton style = {{backgroundColor: "grey"}} onClick = {() => backgroundChange("grey")}></ChangeButton>
                 <ChangeButton style = {{backgroundColor: "white"}} onClick = {() => backgroundChange("white")}></ChangeButton>
                 <ChangeButton style = {{backgroundColor: "black"}} onClick = {() => backgroundChange("black")}></ChangeButton>
@@ -77,7 +115,7 @@ const Detail = (props) => {
             </Top>
             <Context>
                 <Inner>
-                    {!props.selected[3] ? <Img width = {props.selected[0]} height = {props.selected[1]} src = {props.selected[2]}/>
+                    {!props.selected[3] ? <Img width = {props.selected[0]*zoomLevel} height = {props.selected[1]*zoomLevel} src = {props.selected[2]}/>
                                     : <Video src = {props.selected[2]} controls/>}
                 </Inner>
             </Context>

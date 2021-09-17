@@ -63,7 +63,7 @@ const Body = (props) => {
                 // '!'로 스플릿하고
                 const second_divided = first_divided[i].split('!');
                 
-                // 사이즈가 1350, 650이 넘는다면, 너비는 1350, 높이는 650이 넘어가지 않도록 원본 너비, 높이 비율 유지하면서 조정 
+                // 사이즈가 1150, 650이 넘는다면, 너비는 1150, 높이는 650이 넘어가지 않도록 원본 너비, 높이 비율 유지하면서 조정 
                 if(Number(second_divided[0]) > 1150 || Number(second_divided[1]) > 650){
                    
                     second_divided[0] = Number(second_divided[0]);

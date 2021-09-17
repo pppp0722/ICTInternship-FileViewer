@@ -1,5 +1,8 @@
+import axios from 'axios';
 import React, {useState} from 'react';
 import styled from 'styled-components';
+
+import DownloadPng from "../images/download.png";
 
 const Detail = (props) => {
     const [backgroundColor , setBackgroundColor] = useState("grey");
@@ -36,12 +39,20 @@ const Detail = (props) => {
         font-size: 30px;
     `
 
+    const DownloadButton = styled.button`
+        float: right;
+        width: 80px;
+        height: 50px;
+        font-size: 30px;
+        margin-left: 80px;
+    `
+
     const CloseButton = styled.button`
         float: right;
         width: 80px;
         height: 50px;
         font-size: 30px;
-        margin-left: 160px;
+        font-weight: 600;
     `
 
     const Context = styled.div`
@@ -89,6 +100,25 @@ const Detail = (props) => {
         setBackgroundColor(color);
     }
 
+    // 다운로드 기능
+    const download = () =>{
+        // 현재 http:// ~~~~ /api/source/메뉴명/파일이름.확장자 인 상태이므로 파일이름, 확장자만 분리하여 가져온다.
+        const splited1 = props.selected[2].split("api/")[1];
+        // source/메뉴명/파일이름.확장자인 상태
+        const splited2 = splited1.split("/")[2];
+
+        // 파일 다운로드
+        axios({url: props.selected[2], method: 'GET', responseType: "blob"})
+        .then((response) => {
+            const url = window.URL.createObjectURL(new Blob([response.data]));
+            const link = document.createElement('a');
+            link.href = url;
+            link.setAttribute("download", splited2);
+            document.body.appendChild(link);
+            link.click();
+        })
+        .catch((error) => {console.log(error)});
+    }
 
     // 닫으면 부모의 디테일뷰 띄울 것인지 boolean값 false로 변경
     // 선택한 값 없음으로 변경
@@ -103,7 +133,7 @@ const Detail = (props) => {
                 {!props.selected[3] ?
                 <div>
                     <ZoomButton onClick = {() => zoomControl("-")}>-</ZoomButton>
-                    <ZoomButton onClick = {() => zoomControl("1")}>{zoomLevel}</ZoomButton>
+                    <ZoomButton onClick = {() => zoomControl("1")}>x{zoomLevel}</ZoomButton>
                     <ZoomButton onClick = {() => zoomControl("+")}>+</ZoomButton>
                 </div>
                 : <Empty/>}
@@ -112,11 +142,12 @@ const Detail = (props) => {
                 <ChangeButton style = {{backgroundColor: "white"}} onClick = {() => backgroundChange("white")}></ChangeButton>
                 <ChangeButton style = {{backgroundColor: "black"}} onClick = {() => backgroundChange("black")}></ChangeButton>
                 <CloseButton onClick = {close}>X</CloseButton>
+                <DownloadButton style = {{backgroundImage: `url(${DownloadPng})`}} onClick = {download}></DownloadButton>
             </Top>
             <Context>
                 <Inner>
                     {!props.selected[3] ? <Img width = {props.selected[0]*zoomLevel} height = {props.selected[1]*zoomLevel} src = {props.selected[2]}/>
-                                    : <Video src = {props.selected[2]} controls/>}
+                                        : <Video src = {props.selected[2]} controls/>}
                 </Inner>
             </Context>
         </Wrapper>

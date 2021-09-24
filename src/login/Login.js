@@ -120,6 +120,13 @@ const Login = () => {
         });
     };
 
+    // Enter 키 입력 시 submit
+    const handleKeyPress = (e) => {
+        if(e.key === "Enter"){
+            submit();
+        }
+    };
+
     return(
         <Container>
             <Wrapper>
@@ -128,13 +135,13 @@ const Login = () => {
                         <Logo>📁File Viewer</Logo>
                         <DivInput>
                             <Text>ID</Text>
-                            {focus ? <InputId autoFocus type = "text" name = "id" placeholder = "ID" value = {id} onChange = {handleId}/>
-                            : <InputId type = "text" name = "id" placeholder = "ID" value = {id} onChange = {handleId}/>}
+                            {focus ? <InputId autoFocus type = "text" name = "id" placeholder = "ID" value = {id} onChange = {handleId} onKeyPress = {handleKeyPress}/>
+                            : <InputId type = "text" name = "id" placeholder = "ID" value = {id} onChange = {handleId} onKeyPress = {handleKeyPress}/>}
                         </DivInput>
                         <DivInput>
                             <Text>PW</Text>
-                            {focus ? <InputPw type = "password" name = "pw" placeholder = "PW" value = {pw} onChange = {handlePw}/>
-                            : <InputPw autoFocus type = "password" name = "pw" placeholder = "PW" value = {pw} onChange = {handlePw}/>}
+                            {focus ? <InputPw type = "password" name = "pw" placeholder = "PW" value = {pw} onChange = {handlePw} onKeyPress = {handleKeyPress}/>
+                            : <InputPw autoFocus type = "password" name = "pw" placeholder = "PW" value = {pw} onChange = {handlePw} onKeyPress = {handleKeyPress}/>}
                         </DivInput>
                         <Button onClick = {() => submit()}>Login</Button>
                     </Context>

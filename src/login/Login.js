@@ -53,7 +53,14 @@ const Login = () => {
         font-weight: 500;
     `
 
-    const Input = styled.input`
+    const InputId = styled.input`
+        display: inline-block;
+        width: 240px;
+        height: 30px;
+        font-size: 18px;
+    `;
+
+    const InputPw = styled.input`
         display: inline-block;
         width: 240px;
         height: 30px;
@@ -73,12 +80,17 @@ const Login = () => {
     const [id, setId] = useState();
     const [pw, setPw] = useState();
 
+    // true면 ID 입력 포커스, false면 PW 입력 포커스
+    const [focus, setFocus] = useState(true);
+
     // input form에서 문자 바뀌면 useState 바꿔줌
     const handleId = (e) =>{
+        if(!focus) setFocus(true);
         setId(e.target.value);
     }
 
     const handlePw = (e) =>{
+        if(focus) setFocus(false);
         setPw(e.target.value);
     }
 
@@ -116,11 +128,13 @@ const Login = () => {
                         <Logo>📁File Viewer</Logo>
                         <DivInput>
                             <Text>ID</Text>
-                            <Input type = "text" name = "id" placeholder = "ID" value = {id} onChange = {handleId}/>
+                            {focus ? <InputId autoFocus type = "text" name = "id" placeholder = "ID" value = {id} onChange = {handleId}/>
+                            : <InputId type = "text" name = "id" placeholder = "ID" value = {id} onChange = {handleId}/>}
                         </DivInput>
                         <DivInput>
                             <Text>PW</Text>
-                            <Input type = "password" name = "pw" placeholder = "PW" value = {pw} onChange = {handlePw}/>
+                            {focus ? <InputPw type = "password" name = "pw" placeholder = "PW" value = {pw} onChange = {handlePw}/>
+                            : <InputPw autoFocus type = "password" name = "pw" placeholder = "PW" value = {pw} onChange = {handlePw}/>}
                         </DivInput>
                         <Button onClick = {() => submit()}>Login</Button>
                     </Context>

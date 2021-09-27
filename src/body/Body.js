@@ -42,14 +42,14 @@ const Body = (props) => {
         font-size: 35px;
     `
 
-    // 선택한 메뉴가 바뀔때 마다 서버에 저장된 php문에서 현재 메뉴와 같은 디렉토리에 있는 영상 제외 파일의 url을 모두 전송함
+    // 선택한 메뉴가 바뀔때 마다 서버에 저장된 스프링에서 현재 메뉴와 같은 디렉토리에 있는 영상 제외 파일의 url을 모두 전송함
     // 썸네일의 경우, 이름 마지막에 example@mp4.png 와 같이 url 전달옴
     // 따라서, 썸네일에서는 그대로 사용하고 썸네일 클릭 시 영상을 띄울 때는 example@mp4.png => example.mp4로 변경
     useEffect(() => {
-        // 서버에 저장된 php문에게 현재 메뉴 POST
-        axios.get("/api/source.php?message="+props.menu)
+        // 스프링 Controller에 get 보내기
+        axios.get("/api/source?message="+props.menu)
         .then((response) => {
-            // php문에서 전달받은 메뉴를 통하여 메뉴와 같은 이름의 디렉토리에 있는 파일 가져옴
+            // 스프링에서 전달받은 메뉴를 통하여 메뉴와 같은 이름의 디렉토리에 있는 파일 가져옴
             const res = response.data;
             // 구분하기 위하여 ','가 붙여서 오기 때문에 split 해주고, 마지막 빈 데이터를 지우기 위해 pop 한번 해줌
             const first_divided = res.split(',');
@@ -60,6 +60,7 @@ const Body = (props) => {
 
             // width, height, url로 split한 배열 담아주기
             for(let i=0; i<first_divided.length; i++){
+                console.log(first_divided[i]);
                 // '!'로 스플릿하고
                 const second_divided = first_divided[i].split('!');
                 

@@ -109,7 +109,7 @@ const Login = () => {
 
     // id와 pw가 계정과 일치하면 권한 세션 주고 본문으로 이동 일치하지 않으면 실패
     const submit = () =>{
-        axios.get("/api/login.php")
+        axios.get("/api/login")
         .then((result) => {
             let res = result.data
             let strArray = res.split(',');

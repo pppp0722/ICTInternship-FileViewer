@@ -103,9 +103,10 @@ const Detail = (props) => {
     // 다운로드 기능
     const download = () =>{
         // 현재 http:// ~~~~ /api/source/메뉴명/파일이름.확장자 인 상태이므로 파일이름, 확장자만 분리하여 가져온다.
-        const splited1 = props.selected[2].split("api/")[1];
-        // source/메뉴명/파일이름.확장자인 상태
-        const splited2 = splited1.split("/")[2];
+        const splited1 = props.selected[2].split("source/")[1];
+        // 메뉴명/파일이름.확장자인 상태
+        const splited2 = splited1.split("/")[1];
+        console.log(splited2);
 
         // 파일 다운로드
         axios({url: props.selected[2], method: 'GET', responseType: "blob"})
@@ -146,7 +147,7 @@ const Detail = (props) => {
             </Top>
             <Context>
                 <Inner>
-                    {!props.selected[3] ? <Img width = {props.selected[0]*zoomLevel} height = {props.selected[1]*zoomLevel} src = {props.selected[2]}/>
+                    {!props.selected[3] ? <Img width = {props.selected[0]*zoomLevel} height = {props.selected[1]*zoomLevel} src = {`http://localhost:8090/${props.selected[2]}`}/>
                                         : <Video src = {props.selected[2]} controls/>}
                 </Inner>
             </Context>

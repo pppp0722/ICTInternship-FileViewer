@@ -60,7 +60,6 @@ const Body = (props) => {
 
             // width, height, url로 split한 배열 담아주기
             for(let i=0; i<first_divided.length; i++){
-                console.log(first_divided[i]);
                 // '!'로 스플릿하고
                 const second_divided = first_divided[i].split('!');
                 

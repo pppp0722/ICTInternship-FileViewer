@@ -106,7 +106,6 @@ const Detail = (props) => {
         const splited1 = props.selected[2].split("source/")[1];
         // 메뉴명/파일이름.확장자인 상태
         const splited2 = splited1.split("/")[1];
-        console.log(splited2);
 
         // 파일 다운로드
         axios({url: props.selected[2], method: 'GET', responseType: "blob"})

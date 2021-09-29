@@ -1,8 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
-import UserData from "./UserData.json";
 import axios from 'axios';
-
+import crypto from 'crypto-js';
 import { useHistory } from 'react-router-dom';
 
 const Login = () => {
@@ -108,13 +107,22 @@ const Login = () => {
     };
 
     // id와 pw가 계정과 일치하면 권한 세션 주고 본문으로 이동 일치하지 않으면 실패
-    const submit = () =>{
-        axios.get("/api/login")
+    const submit = async () =>{
+        axios.get("/fileviewer/api/login")
         .then((result) => {
             let res = result.data
             let strArray = res.split(',');
+            let byteId = crypto.AES.decrypt(strArray[0],"ilhwan");
+            let bytePw = crypto.AES.decrypt(strArray[1],"ilhwan");
 
-            success(strArray);
+            let originalId = byteId.toString(crypto.enc.Utf8);
+            let originalPw = bytePw.toString(crypto.enc.Utf8);
+
+            let decrypted = [];
+            decrypted.push(originalId);
+            decrypted.push(originalPw);
+
+            success(decrypted);
         }).catch((error) => {
             console.log("can't access");
         });

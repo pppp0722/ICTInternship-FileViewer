@@ -46,59 +46,62 @@ const Body = (props) => {
     // 썸네일의 경우, 이름 마지막에 example@mp4.png 와 같이 url 전달옴
     // 따라서, 썸네일에서는 그대로 사용하고 썸네일 클릭 시 영상을 띄울 때는 example@mp4.png => example.mp4로 변경
     useEffect(() => {
-        // 스프링 Controller에 get 보내기
-        axios.get("/api/source?message="+props.menu)
-        .then((response) => {
-            // 스프링에서 전달받은 메뉴를 통하여 메뉴와 같은 이름의 디렉토리에 있는 파일 가져옴
-            const res = response.data;
-            // 구분하기 위하여 ','가 붙여서 오기 때문에 split 해주고, 마지막 빈 데이터를 지우기 위해 pop 한번 해줌
-            const first_divided = res.split(',');
-            first_divided.pop();
-            
-            // status[] => 0: width, 1: height, 2: url, 3: isVideo
-            const status = []; 
-
-            // width, height, url로 split한 배열 담아주기
-            for(let i=0; i<first_divided.length; i++){
-                // '!'로 스플릿하고
-                const second_divided = first_divided[i].split('!');
+        // 선택한 메뉴가 home이 아닐 때
+        if(props.menu !== "home"){ 
+            // 스프링 Controller에 get 보내기
+            axios.get("/fileviewer/api/source?message="+props.menu)
+            .then((response) => {
+                // 스프링에서 전달받은 메뉴를 통하여 메뉴와 같은 이름의 디렉토리에 있는 파일 가져옴
+                const res = response.data;
+                // 구분하기 위하여 ','가 붙여서 오기 때문에 split 해주고, 마지막 빈 데이터를 지우기 위해 pop 한번 해줌
+                const first_divided = res.split(',');
+                first_divided.pop();
                 
-                // 사이즈가 1150, 650이 넘는다면, 너비는 1150, 높이는 650이 넘어가지 않도록 원본 너비, 높이 비율 유지하면서 조정 
-                if(Number(second_divided[0]) > 1150 || Number(second_divided[1]) > 650){
-                   
-                    second_divided[0] = Number(second_divided[0]);
-                    second_divided[1] = Number(second_divided[1]);
-                  
-                    if(second_divided[0] > 1150){
-                        second_divided[1] = second_divided[1] * 1150 / second_divided[0];
-                        second_divided[0] = second_divided[0] * 1150 / second_divided[0];
+                // status[] => 0: width, 1: height, 2: url, 3: isVideo
+                const status = []; 
+
+                // width, height, url로 split한 배열 담아주기
+                for(let i=0; i<first_divided.length; i++){
+                    // '!'로 스플릿하고
+                    const second_divided = first_divided[i].split('!');
+                    
+                    // 사이즈가 1150, 650이 넘는다면, 너비는 1150, 높이는 650이 넘어가지 않도록 원본 너비, 높이 비율 유지하면서 조정 
+                    if(Number(second_divided[0]) > 1150 || Number(second_divided[1]) > 650){
+                    
+                        second_divided[0] = Number(second_divided[0]);
+                        second_divided[1] = Number(second_divided[1]);
+                    
+                        if(second_divided[0] > 1150){
+                            second_divided[1] = second_divided[1] * 1150 / second_divided[0];
+                            second_divided[0] = second_divided[0] * 1150 / second_divided[0];
+                        }
+
+                        if(second_divided[1] > 650){
+                            second_divided[0] = second_divided[0] * 650 / second_divided[1];
+                            second_divided[1] = second_divided[1] * 650 / second_divided[1];
+                        }
+
+                        second_divided[0] = String(Math.round(second_divided[0]));
+                        second_divided[1] = String(Math.round(second_divided[1]));
                     }
 
-                    if(second_divided[1] > 650){
-                        second_divided[0] = second_divided[0] * 650 / second_divided[1];
-                        second_divided[1] = second_divided[1] * 650 / second_divided[1];
-                    }
+                    second_divided.push(second_divided[2].indexOf("@") !== -1 ? true : false);
 
-                    second_divided[0] = String(Math.round(second_divided[0]));
-                    second_divided[1] = String(Math.round(second_divided[1]));
+                    // 스플릿한 배열 width_height_url 배열에 담아줌
+                    status.push(second_divided);
                 }
 
-                second_divided.push(second_divided[2].indexOf("@") !== -1 ? true : false);
+                // map을 사용하여 url 리스트에 들어있는 원소 개수 만큼 썸네일 컴포넌트 생성
+                // 
+                // 디테일 뷰를 활용하기 위해서 selected와 detail 같이 전달
+                const urlList = status.map((s) => (<Thumbnail status = {s} setSelected = {setSelected} setDetail = {setDetail}/>));
 
-                // 스플릿한 배열 width_height_url 배열에 담아줌
-                status.push(second_divided);
-            }
-
-            // map을 사용하여 url 리스트에 들어있는 원소 개수 만큼 썸네일 컴포넌트 생성
-            // 
-            // 디테일 뷰를 활용하기 위해서 selected와 detail 같이 전달
-            const urlList = status.map((s) => (<Thumbnail status = {s} setSelected = {setSelected} setDetail = {setDetail}/>));
-
-            // return에서 사용하기 위하여 state에 썸네일 컴포넌트 넣어줌
-            setThumbnailList(urlList);
-        }).catch((error) => {
-            console.log(error);
-        });
+                // return에서 사용하기 위하여 state에 썸네일 컴포넌트 넣어줌
+                setThumbnailList(urlList);
+            }).catch((error) => {
+                console.log(error);
+            });
+        }
     },[props.menu]);
 
     // Home 과 나머지 메뉴 분리해서

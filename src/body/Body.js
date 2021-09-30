@@ -49,7 +49,7 @@ const Body = (props) => {
         // 선택한 메뉴가 home이 아닐 때
         if(props.menu !== "home"){ 
             // 스프링 Controller에 get 보내기
-            axios.get("/fileviewer/api/source?message="+props.menu)
+            axios.get("/api/source?message="+props.menu)
             .then((response) => {
                 // 스프링에서 전달받은 메뉴를 통하여 메뉴와 같은 이름의 디렉토리에 있는 파일 가져옴
                 const res = response.data;

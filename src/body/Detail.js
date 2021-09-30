@@ -102,22 +102,14 @@ const Detail = (props) => {
 
     // 다운로드 기능
     const download = () =>{
-        // 현재 http:// ~~~~ /api/source/메뉴명/파일이름.확장자 인 상태이므로 파일이름, 확장자만 분리하여 가져온다.
-        const splited1 = props.selected[2].split("source/")[1];
-        // 메뉴명/파일이름.확장자인 상태
-        const splited2 = splited1.split("/")[1];
-
-        // 파일 다운로드
-        axios({url: props.selected[2], method: 'GET', responseType: "blob"})
-        .then((response) => {
-            const url = window.URL.createObjectURL(new Blob([response.data]));
-            const link = document.createElement('a');
-            link.href = url;
-            link.setAttribute("download", splited2);
-            document.body.appendChild(link);
-            link.click();
-        })
-        .catch((error) => {console.log(error)});
+        // 현재 http:// ~~~~ /api/source/메뉴명/파일이름.확장자 인 상태이므로 파일이름, 확장자만 분리하여 가져온다.]
+        const name =props.selected[4];
+        const url = props.selected[2];
+        const link = document.createElement('a');
+        link.href = url;
+        link.setAttribute("download", name);
+        document.body.appendChild(link);
+        link.click();
     }
 
     // 닫으면 부모의 디테일뷰 띄울 것인지 boolean값 false로 변경
@@ -126,6 +118,10 @@ const Detail = (props) => {
         props.setDetail(false)
         props.setSelected([]);
     }
+    console.log(props.selected[0]);
+    console.log(props.selected[1]);
+    console.log(props.selected[2]);
+    console.log(props.selected[3]);
 
     return(
         <Wrapper>
@@ -146,7 +142,7 @@ const Detail = (props) => {
             </Top>
             <Context>
                 <Inner>
-                    {!props.selected[3] ? <Img width = {props.selected[0]*zoomLevel} height = {props.selected[1]*zoomLevel} src = {`http://localhost:8090/${props.selected[2]}`}/>
+                    {!props.selected[3] ? <Img width = {props.selected[0]*zoomLevel} height = {props.selected[1]*zoomLevel} src = {props.selected[2]}/>
                                         : <Video src = {props.selected[2]} controls/>}
                 </Inner>
             </Context>

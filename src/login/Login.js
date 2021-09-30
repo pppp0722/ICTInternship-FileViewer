@@ -108,7 +108,7 @@ const Login = () => {
 
     // id와 pw가 계정과 일치하면 권한 세션 주고 본문으로 이동 일치하지 않으면 실패
     const submit = async () =>{
-        axios.get("/fileviewer/api/login")
+        axios.get("/api/login")
         .then((result) => {
             let res = result.data
             let strArray = res.split(',');
@@ -127,6 +127,7 @@ const Login = () => {
             console.log("can't access");
         });
     };
+
 
     // Enter 키 입력 시 submit
     const handleKeyPress = (e) => {

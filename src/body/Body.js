@@ -2,19 +2,24 @@ import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 
 import Thumbnail from './Thumbnail';
-import Detail from './Detail';
 
 import axios from 'axios';
 
 const Body = (props) => {
-    // 모달창을 위해 detail 만들어 줌 true면 모달창 띄우기, false면 모달창 없애기
-    const [detail,setDetail] = useState(false);
-
-    // data를 통하여 선택한 컴포넌트의 정보를 썸네일, 모달창에 전달
-    const [selected, setSelected] = useState([]);
-
     // 썸네일 컴포넌트 맵을 담은 배열 스테이트 return에서 사용하여 선택한 메뉴에 맞는 썸네일 컴포넌트들 출력
     const [thumbnailList, setThumbnailList] = useState([]);
+
+    // 이미지를 15개씩 페이지 넘기는 식으로 구현 현재 가리키고 있는 페이지 번호
+    const [currentPage, setCurrentPage] = useState(1);
+
+    // 추출해온 이미지 정보 리스트 저장
+    const [imgInfoList, setImgInfoList] = useState();
+
+    // 이미지 길이 저장
+    const [imgListLength, setImgListLength] = useState();
+
+    // 하단 보여주는 이미지 페이지 이동
+    const [numberList, setNumberList] = useState();
      
     const Wrapper = styled.div`
         width: 1200px;
@@ -26,7 +31,7 @@ const Body = (props) => {
         margin: auto;
         width: 1160px;
         background-color: #FFF;
-        min-height: 640px;
+        min-height: 500px;
     `
 
     const Text1 = styled.div`
@@ -42,7 +47,24 @@ const Body = (props) => {
         font-size: 35px;
     `
 
-    // 선택한 메뉴가 바뀔때 마다 서버에 저장된 스프링에서 현재 메뉴와 같은 디렉토리에 있는 영상 제외 파일의 url을 모두 전송함
+    const PageNumberDiv = styled.div`
+        text-align: center;
+        width: 1200px;
+        background-color: #BFEDCC;
+    `
+
+    const PageNumber = styled.div`
+        text-align: center;
+        width: 50px;
+        height: 30px;
+        display: inline-block;
+        margin: 5px 20px 0 20px;
+        font-size: 30px;
+        cursor: pointer;
+        color: ${props => props.name === currentPage ? "#00AAFF" : "#000"};
+    ` 
+
+    // 첫 실행 or 선택한 메뉴가 바뀔때 마다 서버에 저장된 스프링에서 현재 메뉴와 같은 디렉토리에 있는 영상 제외 파일의 url을 모두 전송함
     // 썸네일의 경우, 이름 마지막에 example@mp4.png 와 같이 url 전달옴
     // 따라서, 썸네일에서는 그대로 사용하고 썸네일 클릭 시 영상을 띄울 때는 example@mp4.png => example.mp4로 변경
     useEffect(() => {
@@ -94,15 +116,49 @@ const Body = (props) => {
                 // map을 사용하여 url 리스트에 들어있는 원소 개수 만큼 썸네일 컴포넌트 생성
                 // 
                 // 디테일 뷰를 활용하기 위해서 selected와 detail 같이 전달
-                const urlList = status.map((s) => (<Thumbnail status = {s} setSelected = {setSelected} setDetail = {setDetail}/>));
+                setImgInfoList(status);
+                setImgListLength(status.length);
 
+                // 페이지 가능한 수 만큼 선택할 수 있는 PageNumber 생성
+                const intArr = [];
+                for(let i=1; i < (status.length/21) + 1; i++){
+                    intArr.push(i);
+                }
+                const bottomNumberList = intArr.map((n) => (<PageNumber name = {n} onClick = {() => {setCurrentPage(n)}}>{n}</PageNumber>));
+                setNumberList(bottomNumberList);
+
+                const slicedStatus = status.slice(0,21);
+
+                const urlList = slicedStatus.map((s) => (<Thumbnail status = {s}/>));
                 // return에서 사용하기 위하여 state에 썸네일 컴포넌트 넣어줌
                 setThumbnailList(urlList);
+
             }).catch((error) => {
                 console.log(error);
             });
         }
     },[props.menu]);
+
+    //currentPage 바뀔 때 마다 15개 씩 이미지 출력
+    useEffect(() => {
+        let start = (currentPage-1) * 21;
+        let end = 0;
+
+        if(imgListLength >= currentPage * 21) {
+            end = currentPage * 21;
+        }else {
+            end = imgListLength;
+        }
+
+        // 첫 실행 말고 값이 들어올 때만
+        if(imgInfoList){
+            const slicedImgInfoList = imgInfoList.slice(start,end);
+
+            const urlList = slicedImgInfoList.map((s) => (<Thumbnail status = {s}/>));
+            // return에서 사용하기 위하여 state에 썸네일 컴포넌트 넣어줌
+            setThumbnailList(urlList);
+        }
+    },[currentPage]);
 
     // Home 과 나머지 메뉴 분리해서
     if(props.menu === "home"){
@@ -122,7 +178,9 @@ const Body = (props) => {
                 <Inner>
                     {thumbnailList}
                 </Inner>
-                <Detail selected = {selected} setSelected = {setSelected} detail = {detail} setDetail = {setDetail}/>
+                <PageNumberDiv>
+                    {numberList}
+                </PageNumberDiv>
             </Wrapper>
         );
     }

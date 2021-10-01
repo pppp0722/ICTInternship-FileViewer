@@ -3,9 +3,6 @@ import styled from 'styled-components';
 import { useHistory } from 'react-router';
 
 const Header = (props) => {
-    let menu = props.menu;
-    const [current, setCurrent] = useState("home");
-
     const Wrapper = styled.div`
         background-color: #BFEDCC;
         height: 100px;
@@ -41,6 +38,9 @@ const Header = (props) => {
         text-align: center;
     `
 
+    // Layout에서 전달받은 menu 와 동일하다면 버튼 색상 다르게 해서 선택한 것처럼 표현
+    // 마우스 위에 대고 있을 때, 클릭할 때 색상 다르게 표현해서 클릭하는 느낌 나게
+    let menu = props.menu;
     const MenuButton = styled.div`
         margin: 0 1px 0 1px;
         cursor: pointer;
@@ -62,22 +62,22 @@ const Header = (props) => {
         }
     `
 
+    // useHistory 변수 만들어서
     const history = useHistory();
 
+    // useHistory 사용하여 logout하면 세션 없애고 Login으로 이동시킴
     const logout = () => {
-        setCurrent("home");
-        props.setMenu("home");
         sessionStorage.removeItem("isAuthorized");
         history.push("/login");
     };
 
+    // File Viewer 로고 클릭하면 home 메뉴로 이동
     const toHome = () =>{
-        setCurrent("home");
         props.setMenu("home");
     }
 
+    // 다른 메뉴 버튼 클릭하면 해당 메뉴의 이름을 부모 useState에 저장
     const menuButtonClick = (name) => {
-        setCurrent(name);
         props.setMenu(name);
     };
 

@@ -112,8 +112,8 @@ const Login = () => {
         .then((result) => {
             let res = result.data
             let strArray = res.split(',');
-            let byteId = crypto.AES.decrypt(strArray[0],"ilhwan");
-            let bytePw = crypto.AES.decrypt(strArray[1],"ilhwan");
+            let byteId = crypto.AES.decrypt(strArray[0],"key");
+            let bytePw = crypto.AES.decrypt(strArray[1],"key");
 
             let originalId = byteId.toString(crypto.enc.Utf8);
             let originalPw = bytePw.toString(crypto.enc.Utf8);
@@ -127,7 +127,6 @@ const Login = () => {
             console.log("can't access");
         });
     };
-
 
     // Enter 키 입력 시 submit
     const handleKeyPress = (e) => {

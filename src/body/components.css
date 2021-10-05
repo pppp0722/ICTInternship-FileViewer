@@ -1,0 +1,24 @@
+.filebox {
+    width: 1160px;
+    margin: auto;
+    text-align: center;
+    background-color: #B6C9BB;
+    padding: 10px 0 10px 0;
+}
+
+.filebox label {
+    display: inline-block;
+    padding: 5px 30px 5px 30px;
+    color: #000;
+    font-size: 25px;
+    line-height: normal;
+    vertical-align: middle;
+    background-color: #E9F9EE;
+    cursor: pointer;
+    border: 1px solid #000;
+    border-radius: 3px;
+}
+
+.filebox input[type="file"] {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip:rect(0,0,0,0); border: 0;
+}

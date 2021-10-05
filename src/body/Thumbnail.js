@@ -26,7 +26,7 @@ const Thumbnail = (props) => {
         position: relative;
     `
     const Div = styled.div`
-        background-image: url(${imageBackground});
+        background-image: url(${props => props.bgImage});
         background-repeat: round;
         width: 133px;
         height: 133px;
@@ -44,7 +44,7 @@ const Thumbnail = (props) => {
         margin: 46px 46px 0 46px;
     `
 
-    // 컴포넌트에 들어갈 이미지를 Spring에 요청해서 byteArray로 받아옴
+    // 컴포넌트에 들어갈 이미지를 Spring에 요청해서 받아옴
     useEffect(()=> {
         // Spring에 "메뉴/파일이름" 을 message로 get 요청
         axios.get("/api/getsource?message="+props.status[2], {responseType: 'arraybuffer'})
@@ -56,9 +56,6 @@ const Thumbnail = (props) => {
                 {type: response.headers['content-type']}
             );
             let img = URL.createObjectURL(blob);
-
-            // 저장한 뒤 지워줌
-            URL.revokeObjectURL(blob);
 
             // Detail에 url 전달하기 위한 목적으로 useState에 넣어줌
             setImage(img);
@@ -91,7 +88,6 @@ const Thumbnail = (props) => {
                     {type: response.headers['content-type']}
                 );
                 let video = URL.createObjectURL(blob);
-                URL.revokeObjectURL(blob);
 
                 // blob정보, 동영상인지, 파일 이름을 넣어 줌
                 selected.push(video);
@@ -119,7 +115,7 @@ const Thumbnail = (props) => {
     
     return(
         <Wrapper>
-            <Div onClick = {thumbnailClick}>
+            <Div bgImage = {imageBackground} onClick = {thumbnailClick}>
                 <Img src = {image} background-image = {imageBackground}/>
                 {props.status[3] ? <Play src = {PlayButton}/> : ""}
             </Div>

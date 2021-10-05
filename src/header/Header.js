@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { useHistory } from 'react-router';
 
@@ -30,6 +30,9 @@ const Header = (props) => {
         width: 100px;
         height: 40px;
         font-size: 20px;
+        background-color: #E9F9EE;
+        border: 1px solid #000;
+        border-radius: 3px;
     `
 
     const Bottom = styled.div`

@@ -112,8 +112,8 @@ const Login = () => {
         .then((result) => {
             let res = result.data
             let strArray = res.split(',');
-            let byteId = crypto.AES.decrypt(strArray[0],"key");
-            let bytePw = crypto.AES.decrypt(strArray[1],"key");
+            let byteId = crypto.AES.decrypt(strArray[0],"ilhwan0722");
+            let bytePw = crypto.AES.decrypt(strArray[1],"ilhwan0722");
 
             let originalId = byteId.toString(crypto.enc.Utf8);
             let originalPw = bytePw.toString(crypto.enc.Utf8);

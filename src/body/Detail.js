@@ -21,7 +21,7 @@ const Detail = (props) => {
         right: 0;
         bottom: 0;
         left: 0;
-        background-color: ${backgroundColor === "grey" ? "rgba(0,0,0,0.5)" : backgroundColor === "white" ? "#FFF" : "#000"};
+        background-color: ${props => props.bgColor === "grey" ? "rgba(0,0,0,0.5)" : props.bgColor === "white" ? "#FFF" : "#000"};
     `
 
     const Top = styled.div`
@@ -120,7 +120,7 @@ const Detail = (props) => {
     // DownloadButton 클릭 시 download 함수 호출
     // Inner에서 zoom level 고려하여 이미지 크기 조정 후 출력
     return(
-        <Wrapper>
+        <Wrapper bgColor = {backgroundColor}>
             <Top>
                 {!props.fileInfo[3] ?
                 <div>

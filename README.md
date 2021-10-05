@@ -49,6 +49,10 @@ body에서는 유의사항을 알려주고, 메뉴를 통하여 원하는 디렉
 다운로드 버튼을 클릭하여 열람하고 있는 파일을 다운로드 받을 수 있습니다.<br/><br/>
 <img src = "https://user-images.githubusercontent.com/60428537/133726234-7b0380c3-ed8f-402b-aa32-99e7611da3dc.PNG" width="100%"/>
 <br/><br/><br/><br/>
+## 🔗Upload
+업로드 버튼을 클릭하여 여러가지 이미지, 동영상들을 한번에 업로드할 수 있습니다.<br/><br/>
+<img src = "https://user-images.githubusercontent.com/60428537/135984311-eed1ca3d-96cb-48ef-9fac-fc7bb21dda5f.PNG" width="48%"/>  <img src = "https://user-images.githubusercontent.com/60428537/135984363-6267d39b-cf09-4005-91b5-34b8870a7f1d.PNG" width="48%"/>
+<br/><br/><br/><br/>
 ***
 # 개선 사항
 ## ☝Page Number

@@ -117,7 +117,7 @@ const Thumbnail = (props) => {
                 <Img src = {image}/>
                 {props.fileName.indexOf("@") !== -1 ? <Play src = {PlayButton}/> : ""}
             </Div>
-            {detail ? <Detail fileInfo = {fileInfo} setDetail = {setDetail}/> : null}
+            {detail ? <Detail menu = {props.menu} fileInfo = {fileInfo} setDetail = {setDetail}/> : null}
         </Wrapper>
     );
 }

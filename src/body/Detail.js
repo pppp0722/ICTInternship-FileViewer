@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 
@@ -38,7 +39,6 @@ const Detail = (props) => {
         float: left;
         width: 80px;
         height: 50px;
-        font-size: 30px;
         cursor: pointer;
     `
 
@@ -54,8 +54,8 @@ const Detail = (props) => {
         width: 80px;
         height: 50px;
         font-size: 30px;
-        margin-left: 80px;
         cursor: pointer;
+        border-style: outset;
     `
 
     const CloseButton = styled.button`
@@ -65,6 +65,17 @@ const Detail = (props) => {
         font-size: 30px;
         font-weight: 600;
         cursor: pointer;
+        border-style: outset;
+    `
+
+    const DeleteButton = styled.button`
+        float: right;
+        width: 80px;
+        height: 50px;
+        font-size: 30px;
+        font-weight: 600;
+        cursor: pointer;
+        border-style: outset;
     `
 
     const Context = styled.div`
@@ -104,11 +115,11 @@ const Detail = (props) => {
 
         if(width > 1150 || height > 650){
             if(width/1150 > height/650){
+                height *= (1150/width);
                 width = 1150;
-                height = 1150/width;
             }
             else{
-                width = 650/height;
+                width *= (650/height);
                 height = 650;
             }
         }
@@ -130,7 +141,6 @@ const Detail = (props) => {
     // 다운로드 기능
     const download = () =>{
         // 받아온 blob url, 파일 이름으로 다운로드 구현
-        console.log(props.fileInfo[2]);
         const name =props.fileInfo[2];
         const url = props.fileInfo[0];
         const link = document.createElement('a');
@@ -138,6 +148,19 @@ const Detail = (props) => {
         link.setAttribute("download", name);
         document.body.appendChild(link);
         link.click();
+    }
+
+    // 삭제 기능
+    const deleteFile = () =>{
+        if(window.confirm("정말 삭제하시겠습니까?") === true){
+            axios.get(`/api/delete?message=${props.menu}/${props.fileInfo[2]}`).then((response) => {
+                if(response.data === "success"){
+                    alert("삭제 완료!");
+                }
+            }).catch((error) => {
+                console.log(error);
+            });
+        }
     }
 
     // ZoomButton 클릭 시 zoomControl 함수 호출하여 zoom 단계 조정
@@ -150,9 +173,9 @@ const Detail = (props) => {
             <Top>
                 {!props.fileInfo[1] ?
                 <div>
-                    <ZoomButton onClick = {() => zoomControl("-")}>-</ZoomButton>
-                    <ZoomButton onClick = {() => zoomControl("1")}>x{zoomArray[zoomLevel]}</ZoomButton>
-                    <ZoomButton onClick = {() => zoomControl("+")}>+</ZoomButton>
+                    <ZoomButton style = {{fontSize: "30px"}} onClick = {() => zoomControl("-")}>-</ZoomButton>
+                    <ZoomButton style = {{fontSize: "25px"}} onClick = {() => zoomControl("1")}>x{zoomArray[zoomLevel]}</ZoomButton>
+                    <ZoomButton style = {{fontSize: "30px"}} onClick = {() => zoomControl("+")}>+</ZoomButton>
                 </div>
                 : <Empty/>}
 
@@ -161,6 +184,7 @@ const Detail = (props) => {
                 <ChangeButton style = {{backgroundColor: "black"}} onClick = {() => setBackgroundColor("black")}></ChangeButton>
                 <CloseButton onClick = {() => props.setDetail(false)}>X</CloseButton>
                 <DownloadButton style = {{backgroundImage: `url(${DownloadPng})`}} onClick = {download}></DownloadButton>
+                <DeleteButton onClick = {deleteFile}>🗑</DeleteButton>
             </Top>
             <Context>
                 <Inner>

@@ -83,29 +83,20 @@ const Body = (props) => {
                 // 전달받은 response => "A.png,B.png,C.png," ...
                 const res = response.data;
 
-                if(res === "error"){
-                    alert("잘못된 접근입니다.");
+                // useState에 저장
+                setImgInfoList(res);
+
+                const intArr = [];
+                for(let i=1; i < (res.length/21) + 1; i++){
+                    intArr.push(i);
                 }
-                else{
-                    // split해주고 마지막 빈 원소 pop
-                    const fileNames = res.split(',');
-                    fileNames.pop();
-
-                    // useState에 저장
-                    setImgInfoList(fileNames);
-
-                    const intArr = [];
-                    for(let i=1; i < (fileNames.length/21) + 1; i++){
-                        intArr.push(i);
-                    }
                     
-                    const bottomNumberList = intArr.map((n) => (<PageNumber name = {n} onClick = {() => {setCurrentPage(n)}}>{n}</PageNumber>));
-                    setNumberList(bottomNumberList);
+                const bottomNumberList = intArr.map((n) => (<PageNumber name = {n} onClick = {() => {setCurrentPage(n)}}>{n}</PageNumber>));
+                setNumberList(bottomNumberList);
 
-                    const urlList = fileNames.slice(0,21).map((f) => (<Thumbnail menu = {props.menu} fileName = {f}/>));
-                    // return에서 사용하기 위하여 state에 썸네일 컴포넌트 넣어줌
-                    setThumbnailList(urlList);
-                }
+                const urlList = res.slice(0,21).map((f) => (<Thumbnail menu = {props.menu} fileName = {f}/>));
+                // return에서 사용하기 위하여 state에 썸네일 컴포넌트 넣어줌
+                setThumbnailList(urlList);
             }).catch((error) => {
                 console.log(error);
             });

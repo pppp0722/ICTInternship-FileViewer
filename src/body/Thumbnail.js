@@ -12,7 +12,7 @@ const Thumbnail = (props) => {
     const [image, setImage] = useState();
 
     // Detail에 전달할 파일의 정보 Array
-    // 0: width, 1: height, 2: blob url, 3: isVideo(boolean) 4: file name
+    // 0: blob url, 1: isVideo(boolean) 2: fileName
     const [fileInfo, setFileInfo] = useState();
 
     // Detail을 킬 것인지 boolean 값
@@ -47,7 +47,7 @@ const Thumbnail = (props) => {
     // 컴포넌트에 들어갈 이미지를 Spring에 요청해서 받아옴
     useEffect(()=> {
         // Spring에 "메뉴/파일이름" 을 message로 get 요청
-        axios.get("/api/getsource?message="+props.status[2], {responseType: 'arraybuffer'})
+        axios.get(`/api/getsource?message=${props.menu}/${props.fileName}`, {responseType: 'arraybuffer'})
         .then((response) => {
             // response로 file data 받음
             // src에 넣을 blob 생성
@@ -64,35 +64,32 @@ const Thumbnail = (props) => {
         });
     },[]);
 
-    // status[] => 0: width, 1: height, 2: url, 3: isVideo
     const thumbnailClick = () => {
         let selected = [];
-        selected.push(props.status[0]);
-        selected.push(props.status[1]);
 
         // 영상인 경우
         // Ex) "a/b@mp4.png" => "a/b.mp4" 로 변경하기 위한 로직
-        if(props.status[3]){
+        if(props.fileName.indexOf("@") !== -1){
             // a/b@mp4.png => "a/b" / "mp4.png"
-            let splited1 = props.status[2].split("@");
+            const splited1 = props.fileName.split("@");
             // "mp4.png" => "mp4" / "png"
-            let splited2 = splited1[1].split(".");
+            const splited2 = splited1[1].split(".");
             // "example" + "." + "mp4"
-            let url = splited1[0] + "." + splited2[0];
+            const fileName = splited1[0] + "." + splited2[0];
             
             // 해당 썸네일에 맞는 영상을 Spring에 요청하여 받아옴 (썸네일은 단순 png)
-            axios.get("/api/getsource?message="+url, {responseType: 'arraybuffer'})
+            axios.get(`/api/getsource?message=${props.menu}/${fileName}`, {responseType: 'arraybuffer'})
             .then((response) => {
-                let blob = new Blob(
+                const blob = new Blob(
                     [response.data],
                     {type: response.headers['content-type']}
                 );
-                let video = URL.createObjectURL(blob);
+                const video = URL.createObjectURL(blob);
 
                 // blob정보, 동영상인지, 파일 이름을 넣어 줌
                 selected.push(video);
-                selected.push(props.status[3]);
-                selected.push(url.split("/")[1]);
+                selected.push(true);
+                selected.push(fileName);
 
                 // Detail에 보낼 배열을 useState에 넣고 detail창을 true로 해줌
                 setFileInfo(selected); // state에 선택한 url 넣어주기
@@ -104,8 +101,8 @@ const Thumbnail = (props) => {
         else{
             // 동영상이 아닌 경우, 기존의 useState에 넣어 놓은 blob url 넣어주고, 동영상인지 false 넣어주고, 파일 이름 넣어줌
             selected.push(image);
-            selected.push(props.status[3]);
-            selected.push(props.status[2]);
+            selected.push(false);
+            selected.push(props.fileName);
 
             // Detail에 보낼 배열을 useState에 넣고 detail창을 true로 해줌
             setFileInfo(selected);
@@ -113,11 +110,12 @@ const Thumbnail = (props) => {
         }
     };
     
+    // 동영상 썸네일이면 Play 버튼 넣어줌
     return(
         <Wrapper>
             <Div bgImage = {imageBackground} onClick = {thumbnailClick}>
-                <Img src = {image} background-image = {imageBackground}/>
-                {props.status[3] ? <Play src = {PlayButton}/> : ""}
+                <Img src = {image}/>
+                {props.fileName.indexOf("@") !== -1 ? <Play src = {PlayButton}/> : ""}
             </Div>
             {detail ? <Detail fileInfo = {fileInfo} setDetail = {setDetail}/> : null}
         </Wrapper>

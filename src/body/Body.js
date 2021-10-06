@@ -75,78 +75,44 @@ const Body = (props) => {
     // 썸네일의 경우, 이름 마지막에 example@mp4.png 와 같이 url 전달옴
     // 따라서, 썸네일에서는 그대로 사용하고 썸네일 클릭 시 영상을 띄울 때는 example@mp4.png => example.mp4로 변경
     useEffect(() => {
-        console.log("menu change");
         // 선택한 메뉴가 home이 아닐 때
         if(props.menu !== "home"){
             // 스프링 Controller에 get 보내기
             axios.get("/api/source?message="+props.menu)
             .then((response) => {
-                // 스프링에서 전달받은 메뉴를 통하여 메뉴와 같은 이름의 디렉토리에 있는 파일 가져옴
+                // 전달받은 response => "A.png,B.png,C.png," ...
                 const res = response.data;
-                // 구분하기 위하여 ','가 붙여서 오기 때문에 split 해주고, 마지막 빈 데이터를 지우기 위해 pop 한번 해줌
-                const first_divided = res.split(',');
-                first_divided.pop();
-                
-                // status[] => 0: width, 1: height, 2: url, 3: isVideo
-                const status = []; 
 
-                // width, height, url로 split한 배열 담아주기
-                for(let i=0; i<first_divided.length; i++){
-                    // '!'로 스플릿하고
-                    const second_divided = first_divided[i].split('!');
-                    
-                    // 사이즈가 1150, 650이 넘는다면, 너비는 1150, 높이는 650이 넘어가지 않도록 원본 너비, 높이 비율 유지하면서 조정 
-                    if(Number(second_divided[0]) > 1150 || Number(second_divided[1]) > 650){
-                    
-                        second_divided[0] = Number(second_divided[0]);
-                        second_divided[1] = Number(second_divided[1]);
-                    
-                        if(second_divided[0] > 1150){
-                            second_divided[1] = second_divided[1] * 1150 / second_divided[0];
-                            second_divided[0] = second_divided[0] * 1150 / second_divided[0];
-                        }
+                if(res === "error"){
+                    alert("잘못된 접근입니다.");
+                }
+                else{
+                    // split해주고 마지막 빈 원소 pop
+                    const fileNames = res.split(',');
+                    fileNames.pop();
 
-                        if(second_divided[1] > 650){
-                            second_divided[0] = second_divided[0] * 650 / second_divided[1];
-                            second_divided[1] = second_divided[1] * 650 / second_divided[1];
-                        }
+                    // useState에 저장
+                    setImgInfoList(fileNames);
 
-                        second_divided[0] = String(Math.round(second_divided[0]));
-                        second_divided[1] = String(Math.round(second_divided[1]));
+                    const intArr = [];
+                    for(let i=1; i < (fileNames.length/21) + 1; i++){
+                        intArr.push(i);
                     }
+                    
+                    const bottomNumberList = intArr.map((n) => (<PageNumber name = {n} onClick = {() => {setCurrentPage(n)}}>{n}</PageNumber>));
+                    setNumberList(bottomNumberList);
 
-                    second_divided.push(second_divided[2].indexOf("@") !== -1 ? true : false);
-
-                    // 스플릿한 배열 width_height_url 배열에 담아줌
-                    status.push(second_divided);
+                    const urlList = fileNames.slice(0,21).map((f) => (<Thumbnail menu = {props.menu} fileName = {f}/>));
+                    // return에서 사용하기 위하여 state에 썸네일 컴포넌트 넣어줌
+                    setThumbnailList(urlList);
                 }
-
-                // map을 사용하여 url 리스트에 들어있는 원소 개수 만큼 썸네일 컴포넌트 생성
-                // 
-                // 디테일 뷰를 활용하기 위해서 selected와 detail 같이 전달
-                setImgInfoList(status);
-
-                // 페이지 가능한 수 만큼 선택할 수 있는 PageNumber 생성
-                const intArr = [];
-                for(let i=1; i < (status.length/21) + 1; i++){
-                    intArr.push(i);
-                }
-                const bottomNumberList = intArr.map((n) => (<PageNumber name = {n} onClick = {() => {setCurrentPage(n)}}>{n}</PageNumber>));
-                setNumberList(bottomNumberList);
-
-                const slicedStatus = status.slice(0,21);
-
-                const urlList = slicedStatus.map((s) => (<Thumbnail status = {s}/>));
-                // return에서 사용하기 위하여 state에 썸네일 컴포넌트 넣어줌
-                setThumbnailList(urlList);
-
             }).catch((error) => {
                 console.log(error);
             });
         }
     },[props.menu]);
 
-    //currentPage 바뀔 때 마다 15개 씩 이미지 출력
+    //currentPage 바뀔 때 마다 21개 씩 이미지 출력
     useEffect(() => {
         // 첫 실행 말고 값이 들어올 때만
         if(imgInfoList){
@@ -159,18 +125,11 @@ const Body = (props) => {
             const bottomNumberList = intArr.map((n) => (<PageNumber name = {n} onClick = {() => {setCurrentPage(n)}}>{n}</PageNumber>));
             setNumberList(bottomNumberList);
 
-            let start = (currentPage-1) * 21;
-            let end = 0;
-
-            if(imgInfoList.length >= currentPage * 21) {
-                end = currentPage * 21;
-            }else {
-                end = imgInfoList.length;
-            }
+            const start = (currentPage-1) * 21;
+            const end = imgInfoList.length >= currentPage * 21 ? currentPage * 21 : imgInfoList.length;
 
             const slicedImgInfoList = imgInfoList.slice(start,end);
-
-            const urlList = slicedImgInfoList.map((s) => (<Thumbnail status = {s}/>));
+            const urlList = slicedImgInfoList.map((f) => (<Thumbnail menu = {props.menu} fileName = {f}/>));
             // return에서 사용하기 위하여 state에 썸네일 컴포넌트 넣어줌
             setThumbnailList(urlList);
         }
@@ -178,18 +137,21 @@ const Body = (props) => {
 
     const onSaveFile = async (e) => {
         let suitableExt = true;
+
         const formData = new FormData();
         formData.append("menu", props.menu);
+
         for(let i=0; i<e.target.files.length; i++){
             const ext = e.target.files[i]["name"].split(".")[1].toLowerCase();
-            if(ext !== "bmp" && ext !== "jpg" && ext === "jpeg" && ext !== "gif" && ext !== "png" && ext !== "raw"
-            && ext !== "rle" && ext !== "dib" && ext !== "tif" && ext !== "tiff" && ext !== "psd" && ext !== "ai"
-            && ext !== "svg" && ext !== "mp4" && ext !== "m4v" && ext !== "avi" && ext !== "wmv" && ext !== "mwa"
-            && ext !== "asf" && ext !== "mpg" && ext !== "mpeg" && ext !== "ts" && ext !== "mkv" && ext !== "mov"){
+            console.log(ext);
+            if(ext === "bmp" || ext === "jpg" || ext === "jpeg" || ext === "gif" || ext === "png" || ext === "raw"
+            || ext === "rle" || ext === "dib" || ext === "tif" || ext === "tiff" || ext === "psd" || ext === "ai"
+            || ext === "svg" || ext === "mp4" || ext === "m4v" || ext === "avi" || ext === "wmv" || ext === "mwa"
+            || ext === "asf" || ext === "mpg" || ext === "mpeg" || ext === "ts" || ext === "mkv" || ext === "mov"){
+                formData.append(`files`, e.target.files[i]);
+            }else{
                 suitableExt = false;
                 break;
-            }else{
-                formData.append(`files`, e.target.files[i]);
             }
         }
 
@@ -198,14 +160,16 @@ const Body = (props) => {
             .then((response) => {
                 if(response.data === "success"){
                     alert("업로드 성공!");
-                }else{
+                }else if(response.data === "error_fail"){
                     alert("업로드 실패!");
+                }else{
+                    alert("잘못된 접근입니다.");
                 }
             }).catch((error) => {
                 console.log(error);
             });
         }else{
-            console.log("이미지, 동영상 파일만 업로드 가능합니다.");
+            alert("이미지, 동영상 파일만 업로드 가능합니다.");
         }
     }
 

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 
 import DownloadPng from "../images/download.png";
@@ -8,9 +8,14 @@ const Detail = (props) => {
     const [backgroundColor , setBackgroundColor] = useState("grey");
 
     // 확대 및 축소 레벨
-    const [zoomLevel, setZoomLevel] = useState(1.0);
+    const zoomArray = [0.25, 0.5, 0.75, 1, 1.25, 1.5, 2, 3, 5, 8, 12, 17, 23, 30]
+    const [zoomLevel, setZoomLevel] = useState(3);
 
-    // 고정시키고 주변 어둡게 해줘서 강조시킴
+    // 이미지 너비, 높이 저장
+    const [width, setWidth] = useState();
+    const [height, setHeight] = useState();
+
+    // 고정시키고 주변 어둡게 해줘서 강조시킴 
     // 부모의 detail 보여줄 것인지 boolean값이 true면 보여주고 false면 hidden
     // 선택한 버튼 이름에 따라 컬러 변경 "grey" 반투명 회색, "white" 불투명 흰색, "black" 불투명 검은색
     const Wrapper = styled.div`
@@ -89,24 +94,45 @@ const Detail = (props) => {
         height: 50px;
     `
 
+    // 처음에 이미지 너비, 높이 가져옴
+    useEffect(()=> {
+        const img = new Image;
+        img.src = props.fileInfo[0];
+
+        let width = img.width;
+        let height = img.height;
+
+        if(width > 1150 || height > 650){
+            if(width/1150 > height/650){
+                width = 1150;
+                height = 1150/width;
+            }
+            else{
+                width = 650/height;
+                height = 650;
+            }
+        }
+
+        setWidth(width);
+        setHeight(height);
+    },[]);
+
     // 이미지 확대, 축소
     const zoomControl = (name) => {
-        // +버튼이면 0.2 더하고 -버튼이면 0.2 감소
-        let after_level = name === "-" ? zoomLevel - 0.5 : name === "+" ? zoomLevel + 0.5 : 1;
-        // toFixed 함수를 사용하여 소수점 1자리 까지 반올림 (컴퓨터 소수계산은 작은 오차 있음)
-        let fixed_level = Math.round(after_level*10)/10
-
-        // 1150px, 650px 넘어가지 않는 선에서 배율 0.5 이상일 때 zoom level 조정
-        if(Number(props.fileInfo[0]) * fixed_level <= 1150 && Number(props.fileInfo[1]) * fixed_level <= 650){
-            setZoomLevel(fixed_level <= 0.5 ? 0.5 : fixed_level);
+        let fixedZoomLevel = name === "1" ? 3 : name === "+" ? zoomLevel + 1 : zoomLevel - 1;
+        if(zoomLevel >= 0 && zoomLevel <= 13){
+            if(width * zoomArray[fixedZoomLevel] <= 1150 && height * zoomArray[fixedZoomLevel] <= 650){
+                setZoomLevel(fixedZoomLevel);
+            }
         }
     }
 
     // 다운로드 기능
     const download = () =>{
         // 받아온 blob url, 파일 이름으로 다운로드 구현
-        const name =props.fileInfo[4];
-        const url = props.fileInfo[2];
+        console.log(props.fileInfo[2]);
+        const name =props.fileInfo[2];
+        const url = props.fileInfo[0];
         const link = document.createElement('a');
         link.href = url;
         link.setAttribute("download", name);
@@ -122,10 +148,10 @@ const Detail = (props) => {
     return(
         <Wrapper bgColor = {backgroundColor}>
             <Top>
-                {!props.fileInfo[3] ?
+                {!props.fileInfo[1] ?
                 <div>
                     <ZoomButton onClick = {() => zoomControl("-")}>-</ZoomButton>
-                    <ZoomButton onClick = {() => zoomControl("1")}>x{zoomLevel}</ZoomButton>
+                    <ZoomButton onClick = {() => zoomControl("1")}>x{zoomArray[zoomLevel]}</ZoomButton>
                     <ZoomButton onClick = {() => zoomControl("+")}>+</ZoomButton>
                 </div>
                 : <Empty/>}
@@ -138,8 +164,8 @@ const Detail = (props) => {
             </Top>
             <Context>
                 <Inner>
-                    {!props.fileInfo[3] ? <Img width = {props.fileInfo[0]*zoomLevel} height = {props.fileInfo[1]*zoomLevel} src = {props.fileInfo[2]}/>
-                                        : <Video src = {props.fileInfo[2]} controls/>}
+                    {!props.fileInfo[1] ? <Img src = {props.fileInfo[0]} width = {width * zoomArray[zoomLevel]} height = {height * zoomArray[zoomLevel]}/>
+                                        : <Video src = {props.fileInfo[0]} controls/>}
                 </Inner>
             </Context>
         </Wrapper>

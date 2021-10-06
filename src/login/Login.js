@@ -111,18 +111,23 @@ const Login = () => {
         axios.get("/api/login")
         .then((result) => {
             let res = result.data
-            let strArray = res.split(',');
-            let byteId = crypto.AES.decrypt(strArray[0],"ilhwan0722");
-            let bytePw = crypto.AES.decrypt(strArray[1],"ilhwan0722");
+            if(res === "error"){
+                alert("잘못된 접근입니다.");
+            }
+            else{
+                let strArray = res.split(',');
+                let byteId = crypto.AES.decrypt(strArray[0],"ilhwan0722");
+                let bytePw = crypto.AES.decrypt(strArray[1],"ilhwan0722");
 
-            let originalId = byteId.toString(crypto.enc.Utf8);
-            let originalPw = bytePw.toString(crypto.enc.Utf8);
+                let originalId = byteId.toString(crypto.enc.Utf8);
+                let originalPw = bytePw.toString(crypto.enc.Utf8);
 
-            let decrypted = [];
-            decrypted.push(originalId);
-            decrypted.push(originalPw);
+                let decrypted = [];
+                decrypted.push(originalId);
+                decrypted.push(originalPw);
 
-            success(decrypted);
+                success(decrypted);
+            }
         }).catch((error) => {
             console.log("can't access");
         });

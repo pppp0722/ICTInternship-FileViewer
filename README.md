@@ -54,7 +54,7 @@ body에서는 유의사항을 알려주고, 메뉴를 통하여 원하는 디렉
 선택한 파일들은 현재 선택한 메뉴에 맞는 서버 내 디렉토리에 적재됩니다.<br/><br/>
 <img src = "https://user-images.githubusercontent.com/60428537/135984311-eed1ca3d-96cb-48ef-9fac-fc7bb21dda5f.PNG" width="48%"/>  <img src = "https://user-images.githubusercontent.com/60428537/135984363-6267d39b-cf09-4005-91b5-34b8870a7f1d.PNG" width="48%"/>
 <br/><br/><br/><br/>
-## 🗑Upload
+## 🗑
 딜리트 버튼을 클릭하여 파일을 삭제할 수 있습니다.<br/><br/>
 동영상 파일의 경우 썸네일까지 한번에 삭제됩니다.<br/><br/>
 <img src = "https://user-images.githubusercontent.com/60428537/136172117-e75860c3-1d06-4a14-acf9-a9f2c48cc35e.png" width="100%"/>

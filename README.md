@@ -74,5 +74,5 @@ body에서는 유의사항을 알려주고, 메뉴를 통하여 원하는 디렉
 이 경우 사용자 입장에서 번거롭고, 썸네일 파일의 이름을 잘못 업로드 하는경우 동영상에 접근이 불가했습니다.<br/><br/>
 사용자의 편의성을 고려하여 동영상 업로드 시 자동으로 해당 동영상에 대한 썸네일 이미지 파일을 생성하는 기능을 추가했습니다.<br/><br/>
 프론트에서 동영상 업로드 요청이 들어오면, 백엔드에서 썸네일 파일도 함께 생성하여 서버 디렉토리에 적재합니다. <br/><br/>
-<img src = "https://user-images.githubusercontent.com/60428537/136308168-e47c7ad2-6fea-4f43-964f-f8bddff1a061.png" width="50%"/>  <img src = "https://user-images.githubusercontent.com/60428537/136308366-6af639cf-4bf0-40be-aef3-07f2da37e322.png" width="50%"/>
+<img src = "https://user-images.githubusercontent.com/60428537/136308168-e47c7ad2-6fea-4f43-964f-f8bddff1a061.png" width="48%"/>  <img src = "https://user-images.githubusercontent.com/60428537/136308366-6af639cf-4bf0-40be-aef3-07f2da37e322.png" width="48%"/>
 <br/><br/><br/><br/>

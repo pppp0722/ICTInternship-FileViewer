@@ -20,7 +20,7 @@
 header 부분 로고와 Home 버튼을 클릭하여 Home으로 이동할 수 있습니다.<br/><br/>
 Logout 버튼을 통하여 권한 세션을 없앤 뒤, 로그인 화면으로 이동합니다.<br/><br/>
 body에서는 유의사항을 알려주고, 메뉴를 통하여 원하는 디렉토리로 이동합니다.<br/><br/>
-<img src = "https://user-images.githubusercontent.com/60428537/133565411-174f5022-6dc6-465c-ac2b-d4daf627ad98.PNG" width="100%"/>
+<img src = "https://user-images.githubusercontent.com/60428537/136309949-e987e84b-09ec-4f85-8fc5-0d8544112fbc.png" width="100%"/>
 <br/><br/><br/><br/>
 ## 📁Storage
 저장소에서는 썸네일을 통해 해당 메뉴의 서버 디렉토리에 적재된 사진 및 영상 파일들을 보여줍니다.<br/><br/>

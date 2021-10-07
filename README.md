@@ -26,7 +26,7 @@ body에서는 유의사항을 알려주고, 메뉴를 통하여 원하는 디렉
 저장소에서는 썸네일을 통해 해당 메뉴의 서버 디렉토리에 적재된 사진 및 영상 파일들을 보여줍니다.<br/><br/>
 배경이 흰색인 소스와 투명인 소스를 구분하기 위하여 이미지 뒤에 투명을 표시하는 background-image를 넣었습니다.<br/><br/>
 영상의 경우, 썸네일 위에 재생이 가능한 영상임을 표시하기 위해 재생 아이콘을 넣었습니다.<br/><br/>
-<img src = "https://user-images.githubusercontent.com/60428537/133726779-8c70fc15-9a66-4325-afd7-3f950f73a227.PNG" width="100%"/>
+<img src = "https://user-images.githubusercontent.com/60428537/136310090-4189bb4b-e415-45a1-a86f-a115f59dd934.png" width="100%"/>
 <br/><br/><br/><br/>
 ## 📖Detail View
 썸네일을 클릭하면 해당 이미지, 영상을 자세히볼 수 있고 다운로드도 받을 수 있는 모달 창을 띄웁니다.<br/><br/>

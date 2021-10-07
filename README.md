@@ -69,10 +69,15 @@ body에서는 유의사항을 알려주고, 메뉴를 통하여 원하는 디렉
 프론트에서 요청할 때 보낸 message를 토대로 백엔드 로컬에서 이미지 및 동영상을 찾아 byteArray로 프론트에 전송하고 프론트에서 출력합니다.<br/><br/>
 <img src = "https://user-images.githubusercontent.com/60428537/135576643-30c45865-48c1-436a-bd5a-abaf0d0b9949.png" width="100%"/>
 <br/><br/><br/><br/>
-## ✌Create Thumbnail
+## ☝Create Thumbnail
 기존의 경우, 동영상 파일을 업로드하면 사용자가 직접 동영상에 대한 썸네일을 제작하여 업로드해야 했습니다.<br/><br/>
 이 경우 사용자 입장에서 번거롭고, 썸네일 파일의 이름을 잘못 업로드 하는경우 동영상에 접근이 불가했습니다.<br/><br/>
 사용자의 편의성을 고려하여 동영상 업로드 시 자동으로 해당 동영상에 대한 썸네일 이미지 파일을 생성하는 기능을 추가했습니다.<br/><br/>
 프론트에서 동영상 업로드 요청이 들어오면, 백엔드에서 썸네일 파일도 함께 생성하여 서버 디렉토리에 적재합니다. <br/><br/>
 <img src = "https://user-images.githubusercontent.com/60428537/136308168-e47c7ad2-6fea-4f43-964f-f8bddff1a061.png" width="48%"/>  <img src = "https://user-images.githubusercontent.com/60428537/136308366-6af639cf-4bf0-40be-aef3-07f2da37e322.png" width="48%"/>
+<br/><br/><br/><br/>
+## ☝Revoke Blob Url
+메모리 누수 현상이 발생하여 확인해본 결과 blob url이 더 이상 참조하지 않아도 메모리에 할당되어 있는 것을 확인했습니다.<br/><br/>
+따라서 React 함수형 컴포넌트에서 생명주기상 componentWillUnmout 함수가 실행되는 useEffect안에 return문에서<br/><br/>
+컴포넌트가 사라질 때 blob url을 메모리에서 해제시켜 메모리 누수를 방지했습니다.<br/><br/>
 <br/><br/><br/><br/>

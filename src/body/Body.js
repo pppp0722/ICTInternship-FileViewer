@@ -43,7 +43,7 @@ const Body = (props) => {
     const Text2 = styled.div`
         margin: 20px 0 20px 50px;
         display: inline-block;
-        font-size: 35px;
+        font-size: 25px;
     `
 
     const InputDiv = styled.div`
@@ -134,7 +134,6 @@ const Body = (props) => {
 
         for(let i=0; i<e.target.files.length; i++){
             const ext = e.target.files[i]["name"].split(".")[1].toLowerCase();
-            console.log(ext);
             if(ext === "bmp" || ext === "jpg" || ext === "jpeg" || ext === "gif" || ext === "png" || ext === "raw"
             || ext === "rle" || ext === "dib" || ext === "tif" || ext === "tiff" || ext === "psd" || ext === "ai"
             || ext === "svg" || ext === "mp4" || ext === "m4v" || ext === "avi" || ext === "wmv" || ext === "mwa"
@@ -170,9 +169,9 @@ const Body = (props) => {
             <Wrapper>
                 <Inner>
                     <Text1>Welcome 👋</Text1><br/>
-                    <Text2>영상 파일의 경우, 해당 영상 썸네일의 파일 명을</Text2><br/>
-                    <Text2>영상: example.mp4 => 썸네일: example@mp4.png</Text2><br/>
-                    <Text2>이와 같이 @와 영상의 확장자를 붙여서 작성</Text2><br/>
+                    <Text2>동영상 업로드 시 썸네일 자동생성을 지원하지만, 적용되지 않는 동영상 포맷이 존재합니다.</Text2><br/>
+                    <Text2>영상: example.확장자 => 썸네일: example@확장자.png</Text2><br/>
+                    <Text2>이와 같이 자동 생성이 되지 않는 경우, @와 영상의 확장자를 붙여서 직접 작성해주세요.</Text2><br/>
                     <br/>
                     <Text2>파일 업로드 시, Ctrl or Shift 누르면서 파일 선택하면</Text2><br/>
                     <Text2>여러 개 파일 동시에 업로드 가능(이미지 or 동영상만 가능)</Text2><br/>

@@ -57,7 +57,7 @@ body에서는 유의사항을 알려주고, 메뉴를 통하여 원하는 디렉
 ## 🗑Delete
 딜리트 버튼을 클릭하여 파일을 삭제할 수 있습니다.<br/><br/>
 동영상 파일의 경우 썸네일까지 한번에 삭제됩니다.<br/><br/>
-<img src = "https://user-images.githubusercontent.com/60428537/136172117-e75860c3-1d06-4a14-acf9-a9f2c48cc35e.png" width="100%"/>
+<img src = "https://user-images.githubusercontent.com/60428537/136172117-e75860c3-1d06-4a14-acf9-a9f2c48cc35e.png" width="48%"/>  <img src = "https://user-images.githubusercontent.com/60428537/136352348-917d00d9-759c-42d8-bc04-32daeacb2a0a.png" width="48%"/>
 <br/><br/><br/><br/>
 ***
 # 개선 사항

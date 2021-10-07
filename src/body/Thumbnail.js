@@ -62,6 +62,9 @@ const Thumbnail = (props) => {
         }).catch((error) => {
             console.log(error);
         });
+        return () => {
+            URL.revokeObjectURL(image);
+        };
     },[]);
 
     const thumbnailClick = () => {

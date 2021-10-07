@@ -126,6 +126,12 @@ const Detail = (props) => {
 
         setWidth(width);
         setHeight(height);
+
+        return () => {
+            if(props.fileInfo[1]){
+                URL.revokeObjectURL(props.fileInfo[0]);
+            }
+        };
     },[]);
 
     // 이미지 확대, 축소

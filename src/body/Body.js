@@ -169,12 +169,17 @@ const Body = (props) => {
             <Wrapper>
                 <Inner>
                     <Text1>Welcome 👋</Text1><br/>
-                    <Text2>동영상 업로드 시 썸네일 자동생성을 지원하지만, 적용되지 않는 동영상 포맷이 존재합니다.</Text2><br/>
-                    <Text2>영상: example.확장자 => 썸네일: example@확장자.png</Text2><br/>
-                    <Text2>이와 같이 자동 생성이 되지 않는 경우, @와 영상의 확장자를 붙여서 직접 작성해주세요.</Text2><br/>
-                    <br/>
                     <Text2>파일 업로드 시, Ctrl or Shift 누르면서 파일 선택하면</Text2><br/>
                     <Text2>여러 개 파일 동시에 업로드 가능(이미지 or 동영상만 가능)</Text2><br/>
+                    <br/>
+                    <Text2>업로드 성공! 문구가 뜨면 모든 파일 업로드 완료</Text2><br/>
+                    <br/>
+                    <Text2>동영상 업로드 시 썸네일 자동생성을 지원하지만, 지원되지 않는 동영상 포맷이 존재합니다.</Text2><br/>
+                    <Text2>영상: example.확장자 => 썸네일: example@확장자.png</Text2><br/>
+                    <Text2>이와 같이 자동 생성이 되지 않는 경우, @와 영상의 확장자를 붙여서 직접 작성해주세요.</Text2><br/>
+                    <Text2>동영상 업로드 시 썸네일 생성을 위해 다소 시간이 소요될 수 있습니다.</Text2><br/>
+                    <br/>
+
                 </Inner>
             </Wrapper>
         );

@@ -47,7 +47,8 @@ const Thumbnail = (props) => {
     // 컴포넌트에 들어갈 이미지를 Spring에 요청해서 받아옴
     useEffect(()=> {
         // Spring에 "메뉴/파일이름" 을 message로 get 요청
-        axios.get(`/api/getsource?message=${props.menu}/${props.fileName}`, {responseType: 'arraybuffer'})
+        axios.get(`http://localhost:8091/api/getsource?message=${props.menu}/${props.fileName}`, {responseType: 'arraybuffer'}) // 로컬
+        // axios.get(`http://183.111.234.54:8091/api/getsource?message=${props.menu}/${props.fileName}`, {responseType: 'arraybuffer'}) // Linux
         .then((response) => {
             // response로 file data 받음
             // src에 넣을 blob 생성
@@ -81,7 +82,8 @@ const Thumbnail = (props) => {
             const fileName = splited1[0] + "." + splited2[0];
             
             // 해당 썸네일에 맞는 영상을 Spring에 요청하여 받아옴 (썸네일은 단순 png)
-            axios.get(`/api/getsource?message=${props.menu}/${fileName}`, {responseType: 'arraybuffer'})
+            axios.get(`http://localhost:8091/api/getsource?message=${props.menu}/${fileName}`, {responseType: 'arraybuffer'}) // 로컬
+            // axios.get(`http://183.111.234.54:8091/api/getsource?message=${props.menu}/${fileName}`, {responseType: 'arraybuffer'}) // Linux
             .then((response) => {
                 const blob = new Blob(
                     [response.data],

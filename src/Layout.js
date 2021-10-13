@@ -17,7 +17,7 @@ const Layout = () => {
     return(
         <Wrapper>
             <Header menu = {menu} setMenu = {setMenu}/>
-            <Body menu = {menu} setMenu = {setMenu}></Body>
+            <Body menu = {menu}></Body>
         </Wrapper>
     );
 }

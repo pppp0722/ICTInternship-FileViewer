@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import crypto from 'crypto-js';
+
 import { useHistory } from 'react-router-dom';
 
 const Login = () => {
@@ -96,40 +97,33 @@ const Login = () => {
     // useHistory를 사용하여 특정 라우트로 보낼 수 있음
     const history = useHistory();
 
-    const success = (strArray) => {
-        if(id === strArray[0] && pw === strArray[1]){
-            sessionStorage.setItem("isAuthorized","true");
-            history.push("/");
-            alert("로그인 성공!");
-        }else{
-            alert("로그인 실패!");
-        }
+    const success = () => {
+        sessionStorage.setItem("isAuthorized","true");
+        history.push("/");
+        alert("로그인 성공!");
     };
 
     // id와 pw가 계정과 일치하면 권한 세션 주고 본문으로 이동 일치하지 않으면 실패
     const submit = async () =>{
-        axios.get("/api/login")
+        const formData = new FormData();
+        formData.append("id", id);
+        formData.append("pw", pw);
+        axios.post("http://localhost:8091/api/login", formData) // 로컬
+        // axios.post("http://183.111.234.54:8091/api/login", formData) // Linux
         .then((result) => {
             let res = result.data
+
+            if(res === "ok"){
+                success();
+            }
+            if(res === "fail"){
+                alert("ID, PW가 일치하지 않습니다.");
+            }
             if(res === "error"){
                 alert("잘못된 접근입니다.");
             }
-            else{
-                let strArray = res.split(',');
-                let byteId = crypto.AES.decrypt(strArray[0],"ilhwan0722");
-                let bytePw = crypto.AES.decrypt(strArray[1],"ilhwan0722");
-
-                let originalId = byteId.toString(crypto.enc.Utf8);
-                let originalPw = bytePw.toString(crypto.enc.Utf8);
-
-                let decrypted = [];
-                decrypted.push(originalId);
-                decrypted.push(originalPw);
-
-                success(decrypted);
-            }
         }).catch((error) => {
-            console.log("can't access");
+            console.log(error);
         });
     };
 

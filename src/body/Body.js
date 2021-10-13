@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 
 import Thumbnail from './Thumbnail';
+import Audio from './Audio';
 
 import axios from 'axios';
 
@@ -46,14 +47,6 @@ const Body = (props) => {
         font-size: 25px;
     `
 
-    const InputDiv = styled.div`
-        margin: auto;
-        text-align: center;
-        width: 1160px;
-        padding: 20px 0 20px 0;
-        background-color: #B6C9BB
-    `
-
     const PageNumberDiv = styled.div`
         text-align: center;
         width: 1200px;
@@ -78,7 +71,8 @@ const Body = (props) => {
         // 선택한 메뉴가 home이 아닐 때
         if(props.menu !== "home"){
             // 스프링 Controller에 get 보내기
-            axios.get("/api/source?message="+props.menu)
+            axios.get("http://localhost:8091/api/source?message="+props.menu) // 로컬
+            // axios.get("http://183.111.234.54:8091/api/source?message="+props.menu) // Linux
             .then((response) => {
                 // 전달받은 response => "A.png,B.png,C.png," ...
                 const res = response.data;
@@ -94,7 +88,13 @@ const Body = (props) => {
                 const bottomNumberList = intArr.map((n) => (<PageNumber name = {n} onClick = {() => {setCurrentPage(n)}}>{n}</PageNumber>));
                 setNumberList(bottomNumberList);
 
-                const urlList = res.slice(0,21).map((f) => (<Thumbnail menu = {props.menu} fileName = {f}/>));
+                let urlList = [];
+                if(props.menu !== "mr"){
+                    urlList = res.slice(0,21).map((f) => (<Thumbnail menu = {props.menu} fileName = {f}/>));
+                }else{
+                    urlList = res.slice(0,21).map((f) => (<Audio menu = {props.menu} fileName = {f}/>));
+                }
+
                 // return에서 사용하기 위하여 state에 썸네일 컴포넌트 넣어줌
                 setThumbnailList(urlList);
             }).catch((error) => {
@@ -120,7 +120,14 @@ const Body = (props) => {
             const end = imgInfoList.length >= currentPage * 21 ? currentPage * 21 : imgInfoList.length;
 
             const slicedImgInfoList = imgInfoList.slice(start,end);
-            const urlList = slicedImgInfoList.map((f) => (<Thumbnail menu = {props.menu} fileName = {f}/>));
+
+            let urlList = [];
+            if(props.menu !== "mr"){
+                urlList = slicedImgInfoList.map((f) => (<Thumbnail menu = {props.menu} fileName = {f}/>));
+            }else{
+                urlList = slicedImgInfoList.map((f) => (<Audio menu = {props.menu} fileName = {f}/>));
+            }
+
             // return에서 사용하기 위하여 state에 썸네일 컴포넌트 넣어줌
             setThumbnailList(urlList);
         }
@@ -137,7 +144,8 @@ const Body = (props) => {
             if(ext === "bmp" || ext === "jpg" || ext === "jpeg" || ext === "gif" || ext === "png" || ext === "raw"
             || ext === "rle" || ext === "dib" || ext === "tif" || ext === "tiff" || ext === "psd" || ext === "ai"
             || ext === "svg" || ext === "mp4" || ext === "m4v" || ext === "avi" || ext === "wmv" || ext === "mwa"
-            || ext === "asf" || ext === "mpg" || ext === "mpeg" || ext === "ts" || ext === "mkv" || ext === "mov"){
+            || ext === "asf" || ext === "mpg" || ext === "mpeg" || ext === "ts" || ext === "mkv" || ext === "mov"
+            || ext === "mp3" || ext === "aac" || ext === "wav" || ext === "aiff" || ext === "flac" || ext === "ogg"){
                 formData.append(`files`, e.target.files[i]);
             }else{
                 suitableExt = false;
@@ -146,7 +154,8 @@ const Body = (props) => {
         }
 
         if(suitableExt){
-            axios.post("/api/upload", formData)
+            axios.post("http://localhost:8091/api/upload", formData) // 로컬
+            // axios.post("http://183.111.234.54:8091/api/upload", formData) // Linux
             .then((response) => {
                 if(response.data === "success"){
                     alert("업로드 성공!");
@@ -159,7 +168,7 @@ const Body = (props) => {
                 console.log(error);
             });
         }else{
-            alert("이미지, 동영상 파일만 업로드 가능합니다.");
+            alert("이미지, 동영상, 오디오 파일만 업로드 가능합니다.");
         }
     }
 
@@ -170,7 +179,7 @@ const Body = (props) => {
                 <Inner>
                     <Text1>Welcome 👋</Text1><br/>
                     <Text2>파일 업로드 시, Ctrl or Shift 누르면서 파일 선택하면</Text2><br/>
-                    <Text2>여러 개 파일 동시에 업로드 가능(이미지 or 동영상만 가능)</Text2><br/>
+                    <Text2>여러 개 파일 동시에 업로드 가능(이미지 or 동영상 or 오디오만 가능)</Text2><br/>
                     <br/>
                     <Text2>업로드 성공! 문구가 뜨면 모든 파일 업로드 완료</Text2><br/>
                     <br/>

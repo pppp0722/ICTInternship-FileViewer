@@ -159,7 +159,9 @@ const Detail = (props) => {
     // 삭제 기능
     const deleteFile = () =>{
         if(window.confirm("정말 삭제하시겠습니까?") === true){
-            axios.get(`/api/delete?message=${props.menu}/${props.fileInfo[2]}`).then((response) => {
+            axios.get(`http://localhost:8091/api/delete?message=${props.menu}/${props.fileInfo[2]}`) // 로컬
+            // axios.get(`http://183.111.234.54:8091/api/delete?message=${props.menu}/${props.fileInfo[2]}`) // Linux
+            .then((response) => {
                 if(response.data === "success"){
                     alert("삭제 완료!");
                 }

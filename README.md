@@ -59,6 +59,11 @@ body에서는 유의사항을 알려주고, 메뉴를 통하여 원하는 디렉
 동영상 파일의 경우 썸네일까지 한번에 삭제됩니다.<br/><br/>
 <img src = "https://user-images.githubusercontent.com/60428537/136172117-e75860c3-1d06-4a14-acf9-a9f2c48cc35e.png" width="48%"/>  <img src = "https://user-images.githubusercontent.com/60428537/136352348-917d00d9-759c-42d8-bc04-32daeacb2a0a.png" width="48%"/>
 <br/><br/><br/><br/>
+## 🔊Audio View
+특정 메뉴는 오디오 파일들을 열람할 수 있습니다.<br/><br/>
+오디오 리스트 중 한 가지 오디오를 클릭하면 해당 오디오를 듣기, 저장, 지우기 등을 할 수 있습니다.<br/><br/>
+<img src = "https://user-images.githubusercontent.com/60428537/137057339-ca194723-4e93-42d4-b6ab-779e1a8df0f9.png" width="48%"/>  <img src = "https://user-images.githubusercontent.com/60428537/137057455-2e1d6508-53a9-4ebd-9296-7cc0e0c035e9.png" width="48%"/>
+<br/><br/><br/><br/>
 ***
 # 개선 사항
 ## ☝Page Number

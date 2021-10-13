@@ -57,7 +57,12 @@ body에서는 유의사항을 알려주고, 메뉴를 통하여 원하는 디렉
 ## 🗑Delete
 딜리트 버튼을 클릭하여 파일을 삭제할 수 있습니다.<br/><br/>
 동영상 파일의 경우 썸네일까지 한번에 삭제됩니다.<br/><br/>
-<img src = "https://user-images.githubusercontent.com/60428537/136172117-e75860c3-1d06-4a14-acf9-a9f2c48cc35e.png" width="100%"/>
+<img src = "https://user-images.githubusercontent.com/60428537/136172117-e75860c3-1d06-4a14-acf9-a9f2c48cc35e.png" width="48%"/>  <img src = "https://user-images.githubusercontent.com/60428537/136352348-917d00d9-759c-42d8-bc04-32daeacb2a0a.png" width="48%"/>
+<br/><br/><br/><br/>
+## 🔊Audio View
+특정 메뉴는 오디오 파일들을 열람할 수 있습니다.<br/><br/>
+오디오 리스트 중 한 가지 오디오를 클릭하면 해당 오디오를 듣기, 저장, 지우기 등을 할 수 있습니다.<br/><br/>
+<img src = "https://user-images.githubusercontent.com/60428537/137057339-ca194723-4e93-42d4-b6ab-779e1a8df0f9.png" width="48%"/>  <img src = "https://user-images.githubusercontent.com/60428537/137057455-2e1d6508-53a9-4ebd-9296-7cc0e0c035e9.png" width="48%"/>
 <br/><br/><br/><br/>
 ***
 # 개선 사항
@@ -66,7 +71,7 @@ body에서는 유의사항을 알려주고, 메뉴를 통하여 원하는 디렉
 가져온 파일리스트의 파일 개수에 따라 페이지 번호를 지정합니다. <br/><br/>
 페이지 번호를 선택하게 되면, 해당 번호의 출력되는 컴포넌트 개수만큼 slice하여 썸네일 컴포넌트를 호출하고<br/><br/>
 썸네일 컴포넌트 내부에서 해당 파일정보에 맞는 이미지를 Spring에 요청합니다. <br/><br/>
-프론트에서 요청할 때 보낸 message를 토대로 백엔드 로컬에서 이미지 및 동영상을 찾아 byteArray로 프론트에 전송하고 프론트에서 출력합니다.<br/><br/>
+프론트에서 요청할 때 보낸 message를 토대로 백엔드 로컬에서 이미지 및 동영상을 찾아 프론트에 전송하고 프론트에서 출력합니다.<br/><br/>
 <img src = "https://user-images.githubusercontent.com/60428537/135576643-30c45865-48c1-436a-bd5a-abaf0d0b9949.png" width="100%"/>
 <br/><br/><br/><br/>
 ## ☝Create Thumbnail

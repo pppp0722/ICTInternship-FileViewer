@@ -89,7 +89,7 @@ const Body = (props) => {
                 setNumberList(bottomNumberList);
 
                 let urlList = [];
-                if(props.menu !== "mr"){
+                if(props.menu !== "bgm" && props.menu !== "mr"){
                     urlList = res.slice(0,21).map((f) => (<Thumbnail menu = {props.menu} fileName = {f}/>));
                 }else{
                     urlList = res.slice(0,21).map((f) => (<Audio menu = {props.menu} fileName = {f}/>));
@@ -122,7 +122,7 @@ const Body = (props) => {
             const slicedImgInfoList = imgInfoList.slice(start,end);
 
             let urlList = [];
-            if(props.menu !== "mr"){
+            if(props.menu !== "bgm" && props.menu !== "mr"){
                 urlList = slicedImgInfoList.map((f) => (<Thumbnail menu = {props.menu} fileName = {f}/>));
             }else{
                 urlList = slicedImgInfoList.map((f) => (<Audio menu = {props.menu} fileName = {f}/>));
@@ -140,7 +140,8 @@ const Body = (props) => {
         formData.append("menu", props.menu);
 
         for(let i=0; i<e.target.files.length; i++){
-            const ext = e.target.files[i]["name"].split(".")[1].toLowerCase();
+            const ext = e.target.files[i]["name"].split(".")[1].toLowerCase();            
+            // 이미지, 동영상, 오디오만 올릴 수 있게 확장자 걸러내기
             if(ext === "bmp" || ext === "jpg" || ext === "jpeg" || ext === "gif" || ext === "png" || ext === "raw"
             || ext === "rle" || ext === "dib" || ext === "tif" || ext === "tiff" || ext === "psd" || ext === "ai"
             || ext === "svg" || ext === "mp4" || ext === "m4v" || ext === "avi" || ext === "wmv" || ext === "mwa"

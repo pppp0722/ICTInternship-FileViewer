@@ -109,18 +109,16 @@ const Login = () => {
         formData.append("id", id);
         formData.append("pw", pw);
         axios.post("http://localhost:8091/api/login", formData) // 로컬
-        // axios.post("http://183.111.234.54:8091/api/login", formData) // Linux
+        // axios.post("http://QuickConnect.to/ideaconcert:8091/api/login", formData) // Linux
         .then((result) => {
-            let res = result.data
-
-            if(res === "ok"){
-                success();
-            }
-            if(res === "fail"){
-                alert("ID, PW가 일치하지 않습니다.");
-            }
-            if(res === "error"){
-                alert("잘못된 접근입니다.");
+            if(result.status === 200){
+                if(result.data === "ok"){
+                    success();
+                }else{
+                    alert("ID, PW가 일치하지 않습니다.");
+                }
+            }else{
+                alert("오류가 발생하였습니다.");
             }
         }).catch((error) => {
             console.log(error);

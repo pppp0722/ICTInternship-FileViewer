@@ -86,3 +86,8 @@ body에서는 유의사항을 알려주고, 메뉴를 통하여 원하는 디렉
 따라서 React 함수형 컴포넌트에서 생명주기상 componentWillUnmout 함수가 실행되는 useEffect안에 return문에서<br/><br/>
 컴포넌트가 사라질 때 blob url을 메모리에서 해제시켜 메모리 누수를 방지했습니다.<br/><br/>
 <br/><br/><br/><br/>
+## ☝Unsuitable Extension
+적합하지 않은 확장자의 파일이 존재하는 경우 파일 이름을 보여주고, 클릭 시 삭제, 다운로드 기능만 사용할 수 있습니다.<br/><br/>
+<img src = "https://user-images.githubusercontent.com/60428537/138204710-d7b8d14d-d9fb-4d4e-b0e4-4a8f6838cc5f.png" width="48%"/>  <img src = "https://user-images.githubusercontent.com/60428537/138204774-f7a141e6-14e4-4fcf-b1fb-4a321e21cbce.png" width="48%"/>
+<img src = "https://user-images.githubusercontent.com/60428537/138204847-13a7cc47-e751-4b58-938e-ae406e22ab33.png" width="100%"/>
+<br/><br/><br/><br/>

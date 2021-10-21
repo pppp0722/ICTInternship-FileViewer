@@ -1,7 +1,7 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
-import crypto from 'crypto-js';
+import { useSelector } from 'react-redux';
 
 import { useHistory } from 'react-router-dom';
 
@@ -76,12 +76,18 @@ const Login = () => {
         font-weight: 500;
     `;
 
+    // Redux 사용하여 url 가져오기
+    const {url} = useSelector(state => state.url);
+
     // id, pw 두 개를 입력 받으므로 쌍으로 useState 만들어줌
     const [id, setId] = useState();
     const [pw, setPw] = useState();
 
     // true면 ID 입력 포커스, false면 PW 입력 포커스
     const [focus, setFocus] = useState(true);
+
+    // useHistory를 사용하여 특정 라우트로 보낼 수 있음
+    const history = useHistory();
 
     // input form에서 문자 바뀌면 useState 바꿔줌
     const handleId = (e) =>{
@@ -94,26 +100,18 @@ const Login = () => {
         setPw(e.target.value);
     }
 
-    // useHistory를 사용하여 특정 라우트로 보낼 수 있음
-    const history = useHistory();
-
-    const success = () => {
-        sessionStorage.setItem("isAuthorized","true");
-        history.push("/");
-        alert("로그인 성공!");
-    };
-
     // id와 pw가 계정과 일치하면 권한 세션 주고 본문으로 이동 일치하지 않으면 실패
     const submit = async () =>{
         const formData = new FormData();
         formData.append("id", id);
         formData.append("pw", pw);
-        axios.post("http://localhost:8091/api/login", formData) // 로컬
-        // axios.post("http://QuickConnect.to/ideaconcert:8091/api/login", formData) // Linux
+        axios.post(`${url}/api/login`, formData)
         .then((result) => {
             if(result.status === 200){
                 if(result.data === "ok"){
-                    success();
+                    sessionStorage.setItem("isAuthorized","true");
+                    history.push("/");
+                    alert("로그인 성공!");
                 }else{
                     alert("ID, PW가 일치하지 않습니다.");
                 }

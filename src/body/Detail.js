@@ -4,6 +4,8 @@ import styled from 'styled-components';
 
 import DownloadPng from "../images/download.png";
 
+import { useSelector } from 'react-redux';
+
 const Detail = (props) => {
     // 버튼을 통하여 배경 변경
     const [backgroundColor , setBackgroundColor] = useState("grey");
@@ -105,6 +107,8 @@ const Detail = (props) => {
         height: 50px;
     `
 
+    const {url} = useSelector(state => state.url);
+
     // 처음에 이미지 너비, 높이 가져옴
     useEffect(()=> {
         const img = new Image;
@@ -159,8 +163,7 @@ const Detail = (props) => {
     // 삭제 기능
     const deleteFile = () =>{
         if(window.confirm("정말 삭제하시겠습니까?") === true){
-            axios.get(`http://localhost:8091/api/delete?message=${props.menu}/${props.fileInfo[2]}`) // 로컬
-            // axios.get(`http://183.111.234.54:8091/api/delete?message=${props.menu}/${props.fileInfo[2]}`) // Linux
+            axios.get(`${url}/api/delete?message=${props.menu}/${props.fileInfo[2]}`)
             .then((response) => {
                 if(response.data === "success"){
                     alert("삭제 완료!");

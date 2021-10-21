@@ -2,11 +2,11 @@ import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 
-import { useSelector } from 'react-redux';
-
 import DownloadPng from "../images/download.png";
 
-const AudioPlay = (props) => {
+import { useSelector } from 'react-redux';
+
+const Other = (props) => {
 
     const Wrapper = styled.div`
         cursor: default;
@@ -30,7 +30,7 @@ const AudioPlay = (props) => {
     `
 
     const Text = styled.div`
-        font-size : 18px;
+        font-size : 30px;
         display: inline-block;
         background-color: #3EF8FF;
     `
@@ -75,10 +75,7 @@ const AudioPlay = (props) => {
         vertical-align: middle;
         text-align: center;
     `
-    const Audio = styled.audio`
-        width: 600px;
-    `
-    
+
     const {url} = useSelector(state => state.url);
 
     // 다운로드 기능
@@ -113,18 +110,17 @@ const AudioPlay = (props) => {
         <Wrapper>
             <Top>
                 <Empty/>
-                <Text> 🔊{props.fileName} </Text>
                 <CloseButton onClick = {() => props.setDetail(false)}>X</CloseButton>
                 <DownloadButton style = {{backgroundImage: `url(${DownloadPng})`}} onClick = {download}></DownloadButton>
                 <DeleteButton onClick = {deleteFile}>🗑</DeleteButton>
             </Top>
             <Context>
                 <Inner>
-                    <Audio controls src = {props.url}/>
+                    <Text>📄{props.fileName}</Text>
                 </Inner>
             </Context>
         </Wrapper>
     );
 }
 
-export default AudioPlay;
+export default Other;

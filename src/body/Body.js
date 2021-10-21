@@ -6,6 +6,8 @@ import Audio from './Audio';
 
 import axios from 'axios';
 
+import { useSelector } from 'react-redux';
+
 import './components.css'
 
 const Body = (props) => {
@@ -32,6 +34,9 @@ const Body = (props) => {
         width: 1160px;
         background-color: #FFF;
         min-height: 510px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
     `
 
     const Text1 = styled.div`
@@ -63,6 +68,8 @@ const Body = (props) => {
         cursor: pointer;
         color: ${props => props.name === currentPage ? "#00AAFF" : "#000"};
     `
+    
+    const {url} = useSelector(state => state.url);
 
     // 첫 실행 or 선택한 메뉴가 바뀔때 마다 서버에 저장된 스프링에서 현재 메뉴와 같은 디렉토리에 있는 영상 제외 파일의 url을 모두 전송함
     // 썸네일의 경우, 이름 마지막에 example@mp4.png 와 같이 url 전달옴
@@ -71,14 +78,12 @@ const Body = (props) => {
         // 선택한 메뉴가 home이 아닐 때
         if(props.menu !== "home"){
             // 스프링 Controller에 get 보내기
-            axios.get("http://localhost:8091/api/source?message="+props.menu) // 로컬
-            // axios.get("http://183.111.234.54:8091/api/source?message="+props.menu) // Linux
+            axios.get(`${url}/api/source?message=${props.menu}`)
             .then((response) => {
                 // 전달받은 response => "A.png,B.png,C.png," ...
                 const res = response.data;
-
                 // useState에 저장
-                setImgInfoList(res);
+                setImgInfoList(response.data);
 
                 const intArr = [];
                 for(let i=1; i < (res.length/21) + 1; i++){
@@ -142,21 +147,29 @@ const Body = (props) => {
         for(let i=0; i<e.target.files.length; i++){
             const ext = e.target.files[i]["name"].split(".")[1].toLowerCase();            
             // 이미지, 동영상, 오디오만 올릴 수 있게 확장자 걸러내기
-            if(ext === "bmp" || ext === "jpg" || ext === "jpeg" || ext === "gif" || ext === "png" || ext === "raw"
-            || ext === "rle" || ext === "dib" || ext === "tif" || ext === "tiff" || ext === "psd" || ext === "ai"
-            || ext === "svg" || ext === "mp4" || ext === "m4v" || ext === "avi" || ext === "wmv" || ext === "mwa"
-            || ext === "asf" || ext === "mpg" || ext === "mpeg" || ext === "ts" || ext === "mkv" || ext === "mov"
-            || ext === "mp3" || ext === "aac" || ext === "wav" || ext === "aiff" || ext === "flac" || ext === "ogg"){
-                formData.append(`files`, e.target.files[i]);
+            
+            if(props.menu !== "mr" && props.menu !== "bgm"){
+                if(ext === "bmp" || ext === "jpg" || ext === "jpeg" || ext === "gif" || ext === "png" || ext === "raw"
+                || ext === "rle" || ext === "dib" || ext === "tif" || ext === "tiff" || ext === "psd" || ext === "ai"
+                || ext === "svg" || ext === "mp4" || ext === "m4v" || ext === "avi" || ext === "wmv" || ext === "mwa"
+                || ext === "asf" || ext === "mpg" || ext === "mpeg" || ext === "ts" || ext === "mkv" || ext === "mov"){
+                    formData.append(`files`, e.target.files[i]);
+                }else{
+                    suitableExt = false;
+                    break;
+                }
             }else{
-                suitableExt = false;
-                break;
+                if(ext === "mp3" || ext === "aac" || ext === "wav" || ext === "aiff" || ext === "flac" || ext === "ogg"){
+                    formData.append(`files`, e.target.files[i]);
+                }else{
+                    suitableExt = false;
+                    break;
+                }
             }
         }
 
         if(suitableExt){
-            axios.post("http://localhost:8091/api/upload", formData) // 로컬
-            // axios.post("http://183.111.234.54:8091/api/upload", formData) // Linux
+            axios.post(`${url}/api/upload`, formData)
             .then((response) => {
                 if(response.data === "success"){
                     alert("업로드 성공!");
@@ -169,7 +182,7 @@ const Body = (props) => {
                 console.log(error);
             });
         }else{
-            alert("이미지, 동영상, 오디오 파일만 업로드 가능합니다.");
+            alert("적합하지 않은 확장자가 존재합니다.");
         }
     }
 

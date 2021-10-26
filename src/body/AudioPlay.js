@@ -78,7 +78,7 @@ const AudioPlay = (props) => {
     const Audio = styled.audio`
         width: 600px;
     `
-    
+
     const {url} = useSelector(state => state.url);
 
     // 다운로드 기능
@@ -106,6 +106,13 @@ const AudioPlay = (props) => {
             });
         }
     }
+
+    useEffect(()=> {
+        return () => {
+            // 컴포넌트 사라지면 blob url 삭제
+            URL.revokeObjectURL(props.url);
+        };
+    },[]);
 
     // CloseButton 클릭 시 Detail 창 닫기
     // DownloadButton 클릭 시 download 함수 호출

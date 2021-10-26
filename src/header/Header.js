@@ -74,11 +74,6 @@ const Header = (props) => {
         history.push("/login");
     };
 
-    // File Viewer 로고 클릭하면 home 메뉴로 이동
-    const toHome = () =>{
-        props.setMenu("home");
-    }
-
     // 다른 메뉴 버튼 클릭하면 해당 메뉴의 이름을 부모 useState에 저장
     const menuButtonClick = (name) => {
         props.setMenu(name);
@@ -87,8 +82,8 @@ const Header = (props) => {
     return(
         <Wrapper>
             <Top>
-                <Logo onClick = {toHome}>📁File Viewer</Logo>
-                <Button onClick = {logout}>Logout</Button>
+                <Logo onClick = {() => menuButtonClick("home")}>📁File Viewer</Logo>
+                <Button onClick = {() => logout()}>Logout</Button>
             </Top>
             <Bottom>
                 <MenuButton name = "home" onClick = {() => menuButtonClick("home")}>Home</MenuButton>

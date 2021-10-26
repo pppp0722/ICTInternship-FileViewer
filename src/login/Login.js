@@ -101,14 +101,14 @@ const Login = () => {
     }
 
     // id와 pw가 계정과 일치하면 권한 세션 주고 본문으로 이동 일치하지 않으면 실패
-    const submit = async () =>{
+    const attemptLogin = async () =>{
         const formData = new FormData();
         formData.append("id", id);
         formData.append("pw", pw);
         axios.post(`${url}/api/login`, formData)
-        .then((result) => {
-            if(result.status === 200){
-                if(result.data === "ok"){
+        .then((response) => {
+            if(response.status === 200){
+                if(response.data === "ok"){
                     sessionStorage.setItem("isAuthorized","true");
                     history.push("/");
                     alert("로그인 성공!");
@@ -126,7 +126,7 @@ const Login = () => {
     // Enter 키 입력 시 submit
     const handleKeyPress = (e) => {
         if(e.key === "Enter"){
-            submit();
+            attemptLogin();
         }
     };
 
@@ -146,7 +146,7 @@ const Login = () => {
                             {focus ? <InputPw type = "password" name = "pw" placeholder = "PW" value = {pw} onChange = {handlePw} onKeyPress = {handleKeyPress}/>
                             : <InputPw autoFocus type = "password" name = "pw" placeholder = "PW" value = {pw} onChange = {handlePw} onKeyPress = {handleKeyPress}/>}
                         </DivInput>
-                        <Button onClick = {() => submit()}>Login</Button>
+                        <Button onClick = {() => attemptLogin()}>Login</Button>
                     </Context>
                 </Inner>
             </Wrapper>

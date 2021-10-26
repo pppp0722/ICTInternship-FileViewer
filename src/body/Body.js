@@ -15,7 +15,7 @@ const Body = (props) => {
     const [currentPage, setCurrentPage] = useState(1);
 
     // 추출해온 이미지 정보 리스트 저장
-    const [imgInfoList, setImgInfoList] = useState();
+    const [fileNameList, setFileNameList] = useState();
 
     // 썸네일 컴포넌트 맵을 담은 배열 스테이트 return에서 사용하여 선택한 메뉴에 맞는 썸네일 컴포넌트들 출력
     const [thumbnailList, setThumbnailList] = useState([]);
@@ -83,7 +83,7 @@ const Body = (props) => {
                 // 전달받은 response => "A.png,B.png,C.png," ...
                 const res = response.data;
                 // useState에 저장
-                setImgInfoList(response.data);
+                setFileNameList(response.data);
 
                 const intArr = [];
                 for(let i=1; i < (res.length/21) + 1; i++){
@@ -93,15 +93,15 @@ const Body = (props) => {
                 const bottomNumberList = intArr.map((n) => (<PageNumber name = {n} onClick = {() => {setCurrentPage(n)}}>{n}</PageNumber>));
                 setNumberList(bottomNumberList);
 
-                let urlList = [];
+                let currentThumnailList = [];
                 if(props.menu !== "bgm" && props.menu !== "mr"){
-                    urlList = res.slice(0,21).map((f) => (<Thumbnail menu = {props.menu} fileName = {f}/>));
+                    currentThumnailList = res.slice(0,21).map((f) => (<Thumbnail menu = {props.menu} fileName = {f}/>));
                 }else{
-                    urlList = res.slice(0,21).map((f) => (<Audio menu = {props.menu} fileName = {f}/>));
+                    currentThumnailList = res.slice(0,21).map((f) => (<Audio menu = {props.menu} fileName = {f}/>));
                 }
 
                 // return에서 사용하기 위하여 state에 썸네일 컴포넌트 넣어줌
-                setThumbnailList(urlList);
+                setThumbnailList(currentThumnailList);
             }).catch((error) => {
                 console.log(error);
             });
@@ -111,10 +111,11 @@ const Body = (props) => {
     //currentPage 바뀔 때 마다 21개 씩 이미지 출력
     useEffect(() => {
         // 첫 실행 말고 값이 들어올 때만
-        if(imgInfoList){
+        if(fileNameList){
             // 페이지 숫자 리스트 다시 갱신
             const intArr = [];
-            for(let i=1; i < (imgInfoList.length/21 + 1); i++){
+            const fileNum = fileNameList.length;
+            for(let i=1; i < (fileNum/21 + 1); i++){
                 intArr.push(i);
             }
 
@@ -122,19 +123,19 @@ const Body = (props) => {
             setNumberList(bottomNumberList);
 
             const start = (currentPage-1) * 21;
-            const end = imgInfoList.length >= currentPage * 21 ? currentPage * 21 : imgInfoList.length;
+            const end = fileNum >= currentPage * 21 ? currentPage * 21 : fileNum;
 
-            const slicedImgInfoList = imgInfoList.slice(start,end);
+            const slicedFileNameList = fileNameList.slice(start,end);
 
-            let urlList = [];
+            let currentThumnailList = [];
             if(props.menu !== "bgm" && props.menu !== "mr"){
-                urlList = slicedImgInfoList.map((f) => (<Thumbnail menu = {props.menu} fileName = {f}/>));
+                currentThumnailList = slicedFileNameList.map((f) => (<Thumbnail menu = {props.menu} fileName = {f}/>));
             }else{
-                urlList = slicedImgInfoList.map((f) => (<Audio menu = {props.menu} fileName = {f}/>));
+                currentThumnailList = slicedFileNameList.map((f) => (<Audio menu = {props.menu} fileName = {f}/>));
             }
 
             // return에서 사용하기 위하여 state에 썸네일 컴포넌트 넣어줌
-            setThumbnailList(urlList);
+            setThumbnailList(currentThumnailList);
         }
     },[currentPage]);
 

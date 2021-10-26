@@ -9,7 +9,7 @@ import Other from './Other';
 
 const Audio = (props) => {
     const [detail, setDetail] = useState(false);
-    const [audio, setAudio] = useState();
+    const [blobURL, setBlobURL] = useState();
 
     // audio인지 아닌지
     const [suitable, setSuitable] = useState(true);
@@ -35,7 +35,7 @@ const Audio = (props) => {
         font-size: 16px;
     `
 
-    const Other = styled.div`
+    const OtherContext = styled.div`
         width: 354px;
         height: 32px;
         padding-top: 8px;
@@ -63,10 +63,10 @@ const Audio = (props) => {
                 [response.data],
                 {type: response.headers['content-type']}
             );
-            const audio = URL.createObjectURL(blob);
+            const blobUrl = URL.createObjectURL(blob);
 
             // blob정보 저장
-            setAudio(audio);
+            setBlobURL(blobUrl);
 
             // Detail에 보낼 배열을 useState에 넣고 detail창을 true로 해줌
             if(suitable) setDetail(true); // state에 디테일 뷰 띄우기 true로
@@ -82,11 +82,11 @@ const Audio = (props) => {
             <Context onClick = {clicked}>
                 🔊{props.fileName}
             </Context> :
-            <Other onClick = {clicked}>
+            <OtherContext onClick = {clicked}>
                 ❓{props.fileName}
-            </Other>}
-            {detail ? <AudioPlay menu = {props.menu} fileName = {props.fileName} url = {audio} setDetail = {setDetail}/> : null}
-            {otherDetail ? <Other menu = {props.menu} fileName = {props.fileName} url = {audio} setDetail = {setOtherDetail}/> : null}
+            </OtherContext>}
+            {detail ? <AudioPlay menu = {props.menu} fileName = {props.fileName} url = {blobURL} setDetail = {setDetail}/> : null}
+            {otherDetail ? <Other menu = {props.menu} fileName = {props.fileName} url = {blobURL} setDetail = {setOtherDetail}/> : null}
         </Wrapper>
     );
 }

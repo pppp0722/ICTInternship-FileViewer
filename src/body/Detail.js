@@ -120,7 +120,7 @@ const Detail = (props) => {
         if(width > 1150 || height > 650){
             if(width/1150 > height/650){
                 height *= (1150/width);
-                width = 1150;
+                width = 1150; 
             }
             else{
                 width *= (650/height);

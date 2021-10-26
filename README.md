@@ -2,7 +2,7 @@
 ### ICT Internship(2021) file viewer website front-end & back-end
 ***
 # File Viewer Website
-해당 프로젝트는 디자인 팀의 요청사항으로 서버 안에 저장된 각종 이미지, 영상 소스들을 쉽게 볼 수 있고, 다운받을 수 있는 웹사이트를 개발하는 프로젝트입니다.
+해당 프로젝트는 디자인 팀의 요청사항으로 NAS서버 안에 저장된 각종 이미지, 영상 소스들을 쉽게 볼 수 있고, 다운받을 수 있는 웹사이트를 개발하는 프로젝트입니다.
 <br/><br/>
 선택한 메뉴에 따라 선택한 메뉴에 일치하는 서버 디렉토리 내에 있는 모든 이미지파일, 영상파일을 썸네일 형식으로 보여주고, 클릭 시 해당 파일을 자세히 보여주고, 다운받을 수 있습니다.
 <br/><br/><br/><br/>
@@ -85,4 +85,9 @@ body에서는 유의사항을 알려주고, 메뉴를 통하여 원하는 디렉
 메모리 누수 현상이 발생하여 확인해본 결과 blob url이 더 이상 참조하지 않아도 메모리에 할당되어 있는 것을 확인했습니다.<br/><br/>
 따라서 React 함수형 컴포넌트에서 생명주기상 componentWillUnmout 함수가 실행되는 useEffect안에 return문에서<br/><br/>
 컴포넌트가 사라질 때 blob url을 메모리에서 해제시켜 메모리 누수를 방지했습니다.<br/><br/>
+<br/><br/><br/><br/>
+## ☝Unsuitable Extension
+적합하지 않은 확장자의 파일이 존재하는 경우 파일 이름을 보여주고, 클릭 시 삭제, 다운로드 기능만 사용할 수 있습니다.<br/><br/>
+<img src = "https://user-images.githubusercontent.com/60428537/138204710-d7b8d14d-d9fb-4d4e-b0e4-4a8f6838cc5f.png" width="48%"/>  <img src = "https://user-images.githubusercontent.com/60428537/138204774-f7a141e6-14e4-4fcf-b1fb-4a321e21cbce.png" width="48%"/>
+<img src = "https://user-images.githubusercontent.com/60428537/138204847-13a7cc47-e751-4b58-938e-ae406e22ab33.png" width="100%"/>
 <br/><br/><br/><br/>

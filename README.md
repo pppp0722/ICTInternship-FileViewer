@@ -2,9 +2,7 @@
 ### ICT Internship(2021) file viewer website front-end & back-end
 ***
 # File Viewer Website
-해당 프로젝트는 디자인 팀의 요청사항으로 NAS서버 안에 저장된 각종 이미지, 영상 소스들을 쉽게 볼 수 있고, 다운받을 수 있는 웹사이트를 개발하는 프로젝트입니다.
-<br/><br/>
-선택한 메뉴에 따라 선택한 메뉴에 일치하는 서버 디렉토리 내에 있는 모든 이미지파일, 영상파일을 썸네일 형식으로 보여주고, 클릭 시 해당 파일을 자세히 보여주고, 다운받을 수 있습니다.
+![image](https://user-images.githubusercontent.com/60428537/139192705-a60240dc-32dc-4937-ae8b-5230081990b3.png)
 <br/><br/><br/><br/>
 ***
 # 프로젝트 기능

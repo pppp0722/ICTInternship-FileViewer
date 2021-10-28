@@ -2,7 +2,9 @@
 ### ICT Internship(2021) file viewer website front-end & back-end
 ***
 # File Viewer Website
+
 <img src = "https://user-images.githubusercontent.com/60428537/139192758-876b81fd-f81d-4a2e-82c3-5f40acfb489a.png" width="100%"/>
+
 <br/><br/><br/><br/>
 ***
 # 프로젝트 기능

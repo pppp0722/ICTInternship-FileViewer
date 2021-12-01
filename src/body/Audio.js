@@ -3,8 +3,6 @@ import styled from 'styled-components';
 import axios from 'axios';
 import AudioPlay from './AudioPlay';
 
-import { useSelector } from 'react-redux';
-
 import Other from './Other';
 
 const Audio = (props) => {
@@ -47,8 +45,6 @@ const Audio = (props) => {
         font-size: 16px;
     `
 
-    const {url} = useSelector(state => state.url);
-
     useEffect(()=> {
         const ext = props.fileName.split('.')[1];
         if(ext !== "mp3" && ext !== "aac" && ext !== "wav" && ext !== "aiff" && ext !== "flac" && ext !== "ogg"){
@@ -57,7 +53,7 @@ const Audio = (props) => {
     },[]);
 
     const clicked = () => {
-        axios.get(`${url}/api/getsource?message=${props.menu}/${props.fileName}`, {responseType: 'arraybuffer'})
+        axios.get(`/api/getsource?message=${props.menu}/${props.fileName}`, {responseType: 'arraybuffer'})
         .then((response) => {
             const blob = new Blob(
                 [response.data],

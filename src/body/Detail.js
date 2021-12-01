@@ -1,10 +1,9 @@
 import axios from 'axios';
 import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
+import { useSelector } from 'react-redux';
 
 import DownloadPng from "../images/download.png";
-
-import { useSelector } from 'react-redux';
 
 const Detail = (props) => {
     // 버튼을 통하여 배경 변경
@@ -17,6 +16,8 @@ const Detail = (props) => {
     // 이미지 너비, 높이 저장
     const [width, setWidth] = useState();
     const [height, setHeight] = useState();
+
+    const menuStore = useSelector(store => store.menuReducer);
 
     // 고정시키고 주변 어둡게 해줘서 강조시킴 
     // 부모의 detail 보여줄 것인지 boolean값이 true면 보여주고 false면 hidden
@@ -107,8 +108,6 @@ const Detail = (props) => {
         height: 50px;
     `
 
-    const {url} = useSelector(state => state.url);
-
     // 처음에 이미지 너비, 높이 가져옴
     useEffect(()=> {
         const img = new Image;
@@ -163,7 +162,7 @@ const Detail = (props) => {
     // 삭제 기능
     const deleteFile = () =>{
         if(window.confirm("정말 삭제하시겠습니까?") === true){
-            axios.get(`${url}/api/delete?message=${props.menu}/${props.fileInfo[2]}`)
+            axios.get(`/api/delete?message=${menuStore}/${props.fileInfo[2]}`)
             .then((response) => {
                 if(response.data === "success"){
                     alert("삭제 완료!");

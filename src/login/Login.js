@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
-import { useSelector } from 'react-redux';
 
 import { useHistory } from 'react-router-dom';
 
@@ -76,9 +75,6 @@ const Login = () => {
         font-weight: 500;
     `;
 
-    // Redux 사용하여 url 가져오기
-    const {url} = useSelector(state => state.url);
-
     // id, pw 두 개를 입력 받으므로 쌍으로 useState 만들어줌
     const [id, setId] = useState();
     const [pw, setPw] = useState();
@@ -105,7 +101,7 @@ const Login = () => {
         const formData = new FormData();
         formData.append("id", id);
         formData.append("pw", pw);
-        axios.post(`${url}/api/login`, formData)
+        axios.post('/api/login', formData)
         .then((response) => {
             if(response.status === 200){
                 if(response.data === "ok"){

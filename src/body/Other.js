@@ -1,12 +1,12 @@
 import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
+import { useSelector } from 'react-redux';
 
 import DownloadPng from "../images/download.png";
 
-import { useSelector } from 'react-redux';
-
 const Other = (props) => {
+    const menuStore = useSelector(store => store.menuReducer);
 
     const Wrapper = styled.div`
         cursor: default;
@@ -76,7 +76,6 @@ const Other = (props) => {
         text-align: center;
     `
 
-    const {url} = useSelector(state => state.url);
 
     // 다운로드 기능
     const download = () =>{
@@ -93,7 +92,7 @@ const Other = (props) => {
     // 삭제 기능
     const deleteFile = () =>{
         if(window.confirm("정말 삭제하시겠습니까?") === true){
-            axios.get(`${url}/api/delete?message=${props.menu}/${props.fileName}`)
+            axios.get(`/api/delete?message=${menuStore}/${props.fileName}`)
             .then((response) => {
                 if(response.data === "success"){
                     alert("삭제 완료!");

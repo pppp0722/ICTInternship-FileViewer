@@ -10,14 +10,16 @@ const Layout = () => {
     const [menu, setMenu] = useState("home");
 
     const Wrapper = styled.div`
-        width: 1200px;
+        background-color: #BFEDCC;
+        width: 1280px;
+        height: 770px;
         margin: 0 auto;
     `;
 
     return(
         <Wrapper>
-            <Header menu = {menu} setMenu = {setMenu}/>
-            <Body menu = {menu}></Body>
+            <Header/>
+            <Body/>
         </Wrapper>
     );
 }

@@ -18,15 +18,25 @@ const View = () => {
     `
 
     const dirStore = useSelector(state => state.dirReducer);
-
     const [thumbnails, setThumbnails] = useState([]);
+    const [lastDir, setLastDir] = useState("");
 
     useEffect(() => {
         axios.get(`/api/getFilesName?message=${dirStore}`)
         .then((response) => {
-            const fileInfos = response.data; 
+            const fileInfos = response.data;
+            for(let i = 0; i < fileInfos.length; i++){
+                if(fileInfos[i][1] === null && fileInfos[i][0].indexOf('.') === -1){
+                    fileInfos.unshift(fileInfos.splice(i, 1)[0]);
+                }
+            }
+            if(dirStore !== ""){
+                const goBack = ["back", "back"];
+                fileInfos.unshift(goBack);
+            }
             const thumbnailList = fileInfos.map((fileInfo) => (<Thumbnail dirPath = {dirStore} fileInfo = {fileInfo}/>));
             setThumbnails(thumbnailList);
+            setLastDir(dirStore);
         }).catch((error) => {
             console.log(error);
         });
@@ -35,7 +45,9 @@ const View = () => {
     return(
         <Wrapper>
             <Table>
-                {thumbnails}
+                {lastDir === dirStore ?
+                thumbnails :
+                null}
             </Table>
         </Wrapper>
     );

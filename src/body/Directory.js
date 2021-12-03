@@ -38,13 +38,11 @@ const Directory = (props) => {
 
     const dispatch = useDispatch();
 
-    const dirName = props.dirPaths[0].replace(props.prePath + '\\', "");
+    const dirName = props.dirPaths[0].replace(props.prePath + '/', "");
 
     const [isOpend, setIsOpend] = useState(false);
 
     const [childDirs, setChildDirs] = useState();
-    
-    if(dirName === "overlay") console.log(isOpend);
 
     const unFoldDir = () => {
         if(isOpend){
@@ -63,7 +61,7 @@ const Directory = (props) => {
 
             let j = 1;
             for (let k = i + 1; k < dirPathsArray.length; k++){
-                if (dirPathsArray[k].startsWith(dirPathsArray[i]) && dirPathsArray[k].substr(dirPathsArray[i].length).includes('\\')){
+                if (dirPathsArray[k].startsWith(dirPathsArray[i]) && dirPathsArray[k].substr(dirPathsArray[i].length).includes('/')){
                     dirs.push(dirPathsArray[k]);
                     j++;
                 } else{

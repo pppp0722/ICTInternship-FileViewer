@@ -6,69 +6,66 @@ import Audio from './Audio';
 import Side from './Side';
 import View from './View';
 
-import axios from 'axios';
-import { useSelector } from 'react-redux';
-
 import './components.css'
 
 const Body = () => {
 
-    // 이미지를 15개씩 페이지 넘기는 식으로 구현 현재 가리키고 있는 페이지 번호
-    const [currentPage, setCurrentPage] = useState(1);
+    // // 이미지를 15개씩 페이지 넘기는 식으로 구현 현재 가리키고 있는 페이지 번호
+    // const [currentPage, setCurrentPage] = useState(1);
 
-    // 추출해온 이미지 정보 리스트 저장
-    const [fileNameList, setFileNameList] = useState();
+    // // 추출해온 이미지 정보 리스트 저장
+    // const [fileNameList, setFileNameList] = useState();
 
-    // 썸네일 컴포넌트 맵을 담은 배열 스테이트 return에서 사용하여 선택한 메뉴에 맞는 썸네일 컴포넌트들 출력
-    const [thumbnailList, setThumbnailList] = useState([]);
+    // // 썸네일 컴포넌트 맵을 담은 배열 스테이트 return에서 사용하여 선택한 메뉴에 맞는 썸네일 컴포넌트들 출력
+    // const [thumbnailList, setThumbnailList] = useState([]);
 
-    // 하단 보여주는 이미지 페이지 이동
-    const [numberList, setNumberList] = useState();
-    const menuStore = useSelector((store) => store.menuReducer);
+    // // 하단 보여주는 이미지 페이지 이동
+    // const [numberList, setNumberList] = useState();
+    // const menuStore = useSelector((store) => store.menuReducer);
      
     const Wrapper = styled.div`
         width: 1240px;
-        height: 690px;
+        height: 640px;
         background-color: #FFF;
         margin: 0 auto;
     `
     
-    const Context = styled.div`
-        display: inline-block;
-        width: 80%;
-        height: 100%;
-        background-color: red;
-    `
+    // const Context = styled.div`
+    //     display: inline-block;
+    //     width: 80%;
+    //     height: 100%;
+    //     background-color: red;
+    // `
 
-    const Text1 = styled.div`
-        margin: 20px 0 20px 50px;
-        display: inline-block;
-        font-size: 50px;
-        font-weight: 500;
-    `
+    // const Text1 = styled.div`
+    //     margin: 20px 0 20px 50px;
+    //     display: inline-block;
+    //     font-size: 50px;
+    //     font-weight: 500;
+    // `
 
-    const Text2 = styled.div`
-        margin: 20px 0 20px 50px;
-        display: inline-block;
-        font-size: 25px;
-    `
+    // const Text2 = styled.div`
+    //     margin: 20px 0 20px 50px;
+    //     display: inline-block;
+    //     font-size: 25px;
+    // `
 
-    const PageNumberDiv = styled.div`
-        text-align: center;
-        width: 1200px;
-        background-color: #BFEDCC;
-    `
+    // const PageNumberDiv = styled.div`
+    //     text-align: center;
+    //     width: 1200px;
+    //     background-color: #BFEDCC;
+    // `
 
-    const PageNumber = styled.div`
-        text-align: center;
-        width: 50px;
-        height: 30px;
-        display: inline-block;
-        margin: 5px 20px 0 20px;
-        font-size: 30px;
-        cursor: pointer;
-        color: ${props => props.name === currentPage ? "#00AAFF" : "#000"};
-    `
+    // const PageNumber = styled.div`
+    //     text-align: center;
+    //     width: 50px;
+    //     height: 30px;
+    //     display: inline-block;
+    //     margin: 5px 20px 0 20px;
+    //     font-size: 30px;
+    //     cursor: pointer;
+    //     color: ${props => props.name === currentPage ? "#00AAFF" : "#000"};
+    // `
 
     // 첫 실행 or 선택한 메뉴가 바뀔때 마다 서버에 저장된 스프링에서 현재 메뉴와 같은 디렉토리에 있는 영상 제외 파일의 url을 모두 전송함
     // 썸네일의 경우, 이름 마지막에 example@mp4.png 와 같이 url 전달옴

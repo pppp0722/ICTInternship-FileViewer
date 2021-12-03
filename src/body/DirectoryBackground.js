@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 
 const DirectoryBackground = (props) => {
     const dirStore = useSelector(state => state.dirReducer);
-    console.log(dirStore);
     const Wrapper = styled.div`
         display: inline-block;
         width: 231px;

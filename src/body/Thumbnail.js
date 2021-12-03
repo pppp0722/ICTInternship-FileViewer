@@ -1,6 +1,8 @@
-import React, {useState,useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { setDir } from '../redux/actions';
 
 import imageBackground from '../images/image_background.PNG';
 import { useSelector } from 'react-redux';
@@ -12,6 +14,7 @@ import PngFolder from '../images/folder.PNG';
 import PngAudio from '../images/audio.png';
 import PngVideo from '../images/video.png';
 import PngFile from '../images/file.png';
+import PngBack from '../images/back.png';
 
 // 썸네일의 경우 레이아웃을 위해 너비 200px, 높이 100px로 한 열에 5개씩 들어감
 const Thumbnail = (props) => {
@@ -32,7 +35,14 @@ const Thumbnail = (props) => {
 
     // const menuStore = useSelector(store => store.menuReducer);
 
+    const dispatch = useDispatch();
+
     const [image, setImage] = useState();
+
+    const [detail, setDetail] = useState(false);
+
+    const Container = styled.div`
+    `
 
     const Wrapper = styled.div`
         float: left;
@@ -180,13 +190,12 @@ const Thumbnail = (props) => {
 
     useEffect(()=> {
         if(props.fileInfo[1] === null){
-            if(props.fileInfo[0].indexOf('.') === -1){ // 디렉토리 인 경우
+            if(props.fileInfo[0].indexOf('.') === -1){ // 디렉토리
                 setImage(PngFolder);
             }else{ // 확장자 모르는 경우
                 setImage(PngFile);
             }
-        }
-        else if(props.fileInfo[1].startsWith('image')){ // 이미지 파일의 경우
+        }else if(props.fileInfo[1].startsWith('image')){ // 이미지 파일의 경우
             axios.get(`/api/getImageFile?message=${props.dirPath}/${props.fileInfo[0]}`, {responseType: 'arraybuffer'})
             .then((response) => {
                 // response로 file data 받음
@@ -212,22 +221,50 @@ const Thumbnail = (props) => {
         else if(props.fileInfo[1].startsWith('audio')){ // 오디오 파일의 경우
             setImage(PngAudio);
         }
+        else if(props.fileInfo[1] === 'back'){
+            setImage(PngBack);
+        }
         else{
             setImage(PngFile);
         }
     },[]);
 
+    const thumbnailClick = () => {
+        if(props.fileInfo[1] === 'back'){
+            let splited = props.dirPath.split("/");
+            splited.pop()
+            let result = "";
+            for(let i = 0; i < splited.length; i++){
+                result = result + splited[i] + "/";
+            }
+            result = result.substring(0, result.length - 1);
+
+            dispatch(setDir(result));
+        }else if(props.fileInfo[0].indexOf('.') === -1){ // 디렉토리
+            const path = props.dirPath !== '' ? `${props.dirPath}/${props.fileInfo[0]}` : props.fileInfo[0];
+            dispatch(setDir(path));
+        }else{
+            setDetail(true);
+        }
+    }
+
     // 동영상 썸네일이면 Play 버튼 넣어줌
     return(
-        <Wrapper>
-            {image ?
-            <Image src = {image}/>:
-            <Image/>
+        <Container>
+            <Wrapper onClick = {thumbnailClick}>
+                {image ?
+                <Image src = {image}/>:
+                <Image/>
+                }
+                <Name>
+                    {props.fileInfo[0]}
+                </Name>
+            </Wrapper>
+            {detail ?
+            <Detail setDetail = {setDetail} fileInfo = {props.fileInfo} image = {image}/> :
+            null
             }
-            <Name>
-                {props.fileInfo[0]}
-            </Name>
-        </Wrapper>
+        </Container>
     );
 }
 

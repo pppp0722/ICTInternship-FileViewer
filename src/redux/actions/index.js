@@ -1,17 +1,8 @@
-export const SET_MENU = "SET_MENU";
 export const SET_DIR = "SET_DIR";
 
-
-export function setMenu(menu) {
+export function setDir(dir) {
   return {
-    type: SET_MENU,
-    payload: menu,
+    type: SET_DIR,
+    payload: dir,
   };
 }
-
-export function setDir(dir) {
-    return {
-      type: SET_DIR,
-      payload: dir,
-    };
-  }

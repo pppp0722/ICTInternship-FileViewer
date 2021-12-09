@@ -1,22 +1,19 @@
 .filebox {
-    width: 1160px;
-    margin: auto;
-    text-align: center;
-    background-color: #B6C9BB;
-    padding: 10px 0 10px 0;
 }
 
 .filebox label {
     display: inline-block;
+    margin: 20px 0 20px 20px;
     padding: 5px 30px 5px 30px;
     color: #000;
     font-size: 25px;
-    line-height: normal;
-    vertical-align: middle;
     background-color: #E9F9EE;
     cursor: pointer;
-    border: 1px solid #000;
+    border: 1px solid grey;
     border-radius: 3px;
+}
+.filebox label:hover {
+    background-color: #D8E8DD;
 }
 
 .filebox input[type="file"] {

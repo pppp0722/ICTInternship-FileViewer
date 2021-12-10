@@ -9,15 +9,16 @@
 ***
 # 프로젝트 기능
 ## 🔑Login
-입력한 ID, PW가 일치하면 인증 세션을 부여 받고, 본문으로 이동합니다.<br/><br/>
+입력한 ID, PW 가 일치하면 인증 세션을 부여 받고, 본문으로 이동합니다.<br/><br/>
 인증 세션은 해당 창을 닫을 때 까지 유지 되고, 인증 세션이 없으면 본문으로 이동할 수 없습니다.<br/><br/>
 <img src = "https://user-images.githubusercontent.com/60428537/145522838-212cf322-4f88-4983-85ec-b704fd9f8dc7.png" width="100%"/>
 <br/><br/><br/><br/>
 ## 🏠Home
-header 부분 로고와 Home 버튼을 클릭하여 Home으로 이동할 수 있습니다.<br/><br/>
-Logout 버튼을 통하여 권한 세션을 없앤 뒤, 로그인 화면으로 이동합니다.<br/><br/>
-body에서는 유의사항을 알려주고, 메뉴를 통하여 원하는 디렉토리로 이동합니다.<br/><br/>
-<img src = "https://user-images.githubusercontent.com/60428537/136309949-e987e84b-09ec-4f85-8fc5-0d8544112fbc.png" width="100%"/>
+본문은 root 디렉토리에서 시작합니다.<br/><br/>
+상단 header 에서는 현재 디렉토리 주소를 출력하고, 로그아웃 버튼이 존재합니다.<br/><br/>
+body의 좌측 side bar 에서는 모든 디렉토리를 tree 구조로 보여주며, 펼치거나 클릭하여 해당 디렉토리로 이동할 수 있습니다.<br/><br/>
+body의 우측 view 에서는 현재 디렉토리 내 모든 파일, 디렉토리를 아이콘으로 보여줍니다.<br/><br/>
+<img src = "https://user-images.githubusercontent.com/60428537/145522899-46dd540d-7d29-42f6-a1d9-73583a8e1571.png" width="100%"/>
 <br/><br/><br/><br/>
 ## 📁Storage
 저장소에서는 썸네일을 통해 해당 메뉴의 서버 디렉토리에 적재된 사진 및 영상 파일들을 보여줍니다.<br/><br/>

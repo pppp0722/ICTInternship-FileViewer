@@ -44,7 +44,7 @@ back 버튼으로 부모 디렉토리로 이동할 수 있습니다.<br/><br/>
 이미지를 확대, 축소하여 열람할 수 있는 기능입니다.<br/><br/>
 (-) 버튼으로 축소, (+) 버튼으로 확대 가능하며 최대 크기를 벗어날 수 없습니다.<br/><br/>
 가운데 현재 배율이 표시된 버튼을 클릭하면 원본 크기로 돌아갑니다.<br/><br/>
-<img src = "https://user-images.githubusercontent.com/60428537/145529516-e0a41170-f074-43eb-9ec3-21f1dde83144.png" width="32%"/> <img src = "https://user-images.githubusercontent.com/60428537/145529610-82c31331-9616-470f-9589-c63ee2d8289d.png" width="32%"/> <img src = "https://user-images.githubusercontent.com/60428537/133726352-090dba53-1b72-4c09-8c28-9abc4dc70111.PNG" width="32%"/>
+<img src = "https://user-images.githubusercontent.com/60428537/145529516-e0a41170-f074-43eb-9ec3-21f1dde83144.png" width="32%"/> <img src = "https://user-images.githubusercontent.com/60428537/145529610-82c31331-9616-470f-9589-c63ee2d8289d.png" width="32%"/> <img src = "https://user-images.githubusercontent.com/60428537/145529366-d7b268bf-72f4-4e96-b16b-21f8d0036a07.png" width="32%"/>
 <br/><br/><br/><br/>
 ## 💾Download
 다운로드 버튼을 클릭하여 열람하고 있는 파일을 다운로드 받을 수 있습니다.<br/><br/>

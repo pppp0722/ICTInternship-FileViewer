@@ -26,7 +26,7 @@ add 버튼으로 파일 업로드, 디렉토리 생성을 할 수 있습니다.<
 back 버튼으로 부모 디렉토리로 이동할 수 있습니다.<br/><br/>
 디렉토리 아이콘을 클릭하면 해당 디렉토리로 이동합니다.<br/><br/>
 파일 아이콘을 클릭하면 해당 파일을 자세히 볼 수 있는 Detail로 이동합니다.<br/><br/>
-<img src = "https://user-images.githubusercontent.com/60428537/145524191-910a5804-12f7-453a-8df7-52f8a846fefc.png" width="100%"/>
+<img src = "https://user-images.githubusercontent.com/60428537/145524191-910a5804-12f7-453a-8df7-52f8a846fefc.png" width="100%"/><br/><br/>
 아이콘 hover 시 삭제 버튼이 드러나며 디렉토리, 파일을 삭제할 수 있습니다.<br/><br/>
 <img src = "https://user-images.githubusercontent.com/60428537/145524737-a0e19357-ef23-4611-b56a-75e9a61e58e0.png" width="50%"/>
 <br/><br/><br/><br/>

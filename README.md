@@ -60,6 +60,5 @@ detail에서 delete 버튼을 클릭하여 파일을 삭제할 수 있습니다.
 <img src = "https://user-images.githubusercontent.com/60428537/145530362-57e13a40-9a8e-4528-93cd-529b2805dbf1.png" width="100%"/><br/><br/>
 view 에서도 아이콘 hover 시 삭제 버튼이 드러나며 디렉토리, 파일을 삭제할 수 있습니다.<br/><br/>
 삭제 버튼 클릭 시 되 묻는 alert가 생성되고, 디렉토리 삭제 시 해당 디렉토리 명을 입력해야 삭제할 수 있습니다.<br/><br/>
-<img src = "https://user-images.githubusercontent.com/60428537/145524737-a0e19357-ef23-4611-b56a-75e9a61e58e0.png" width="50%"/><br/><br/>
-<img src = "https://user-images.githubusercontent.com/60428537/145530572-640d0454-b771-420f-90af-c18d31670acd.png" width="50%"/>
+<img src = "https://user-images.githubusercontent.com/60428537/145524737-a0e19357-ef23-4611-b56a-75e9a61e58e0.png" width="48%"/>  <img src = "https://user-images.githubusercontent.com/60428537/145530572-640d0454-b771-420f-90af-c18d31670acd.png" width="48%"/>
 <br/><br/><br/><br/>

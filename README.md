@@ -52,10 +52,10 @@ back 버튼으로 부모 디렉토리로 이동할 수 있습니다.<br/><br/>
 다운로드 버튼을 클릭하여 열람하고 있는 파일을 다운로드 받을 수 있습니다.<br/><br/>
 <img src = "https://user-images.githubusercontent.com/60428537/133726234-7b0380c3-ed8f-402b-aa32-99e7611da3dc.PNG" width="100%"/>
 <br/><br/><br/><br/>
-## 🔗Upload
-업로드 버튼을 클릭하여 여러가지 이미지, 동영상들을 한번에 업로드할 수 있습니다.<br/><br/>
-선택한 파일들은 현재 선택한 메뉴에 맞는 서버 내 디렉토리에 적재됩니다.<br/><br/>
-<img src = "https://user-images.githubusercontent.com/60428537/135984311-eed1ca3d-96cb-48ef-9fac-fc7bb21dda5f.PNG" width="48%"/>  <img src = "https://user-images.githubusercontent.com/60428537/135984363-6267d39b-cf09-4005-91b5-34b8870a7f1d.PNG" width="48%"/>
+## ➕add
+add 버튼을 클릭하면 여러가지 이미지, 동영상들을 한번에 업로드 하거나 새 디렉토리를 생성할 수 있는 모달 창을 띄웁니다.<br/><br/>
+업로드 버튼을 클릭하여 파일들을 선택하여 업로드 하거나, 생성 버튼으로 디렉토리를 생성할 수 있습니다.<br/><br/>
+<img src = "https://user-images.githubusercontent.com/60428537/145526804-a0ee3fbd-1631-4bf2-b438-965cc92ea1a8.png" width="100%"/>
 <br/><br/><br/><br/>
 ## 🗑Delete
 딜리트 버튼을 클릭하여 파일을 삭제할 수 있습니다.<br/><br/>

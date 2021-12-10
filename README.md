@@ -35,7 +35,7 @@ back 버튼으로 부모 디렉토리로 이동할 수 있습니다.<br/><br/>
 이미지의 경우 확대&축소, 배경 색상 변경, 삭제, 다운로드 기능을 사용할 수 있습니다.<br/><br/>
 동영상, 오디오 파일은 재생, 삭제, 다운로드 기능을 사용할 수 있습니다.<br/><br/>
 나머지 파일은 삭제, 다운로드 기능을 사용할 수 있습니다.<br/><br/>
-<img src = "https://user-images.githubusercontent.com/60428537/145525042-eb338aa5-f890-4d91-9ae5-7ec6eeac9a47.png" width="48%"/>  <img src = "https://user-images.githubusercontent.com/60428537/145525770-0eff9b69-6cee-43fa-a965-036525d3442b.png" width="48%"/>
+<img src = "https://user-images.githubusercontent.com/60428537/145525042-eb338aa5-f890-4d91-9ae5-7ec6eeac9a47.png" width="48%"/>  <img src = "https://user-images.githubusercontent.com/60428537/145525770-0eff9b69-6cee-43fa-a965-036525d3442b.png" width="48%"/>  <img src = "https://user-images.githubusercontent.com/60428537/145525920-cade7e14-c8a4-424f-ac7f-168daab501fc.png" width="48%"/>
 <br/><br/><br/><br/>
 ## 🎨Change Background
 배경색과 이미지, 영상 소스의 색상이 비슷하여 식별이 힘든 상황을 방지하기 위하여 배경 색상을 변경할 수 있는 기능입니다.<br/><br/>

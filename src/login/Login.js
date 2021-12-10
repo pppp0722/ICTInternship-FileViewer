@@ -5,15 +5,16 @@ import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 
 const Login = () => {
+    const history = useHistory();
+
     const [id, setId] = useState();
     const [pw, setPw] = useState();
 
     // 현재 focus 중인 input (타이핑할 때마다 focus 사라져서 추가)
     const [focus, setFocus] = useState("id");
 
-    const history = useHistory();
-
-    // id 입력 시 id input focus, pw 입력 시 pw input focus & 입력 값 state에 저장
+    // id 입력 시 id input focus, pw 입력 시 pw input focus
+    // 입력한 값 state에 저장
     const handleId = (e) =>{
         if(focus !== "id") setFocus("id");
         setId(e.target.value);
@@ -24,7 +25,7 @@ const Login = () => {
         setPw(e.target.value);
     }
 
-    // id & pw 일치 시 본문으로 이동
+    // id & pw 일치 시 인증 session 부여 후 본문으로 이동
     const attemptLogin = async () =>{
         const formData = new FormData();
         formData.append("id", id);
@@ -32,12 +33,12 @@ const Login = () => {
         axios.post('/api/login', formData)
         .then((response) => {
             if(response.status === 200){
-                if(response.data === "match"){
+                if(response.data === "match"){ // id && pw 일치
                     sessionStorage.setItem("isAuthorized","true");
                     history.push("/");
                     alert("로그인 성공!");
-                }else if(response.data === "mismatch"){
-                    alert("ID, PW가 일치하지 않습니다.");
+                }else if(response.data === "mismatch"){ // id || pw 불일치
+                    alert("ID 혹은 PW가 일치하지 않습니다.");
                 }
             }else{
                 alert("오류가 발생하였습니다.");

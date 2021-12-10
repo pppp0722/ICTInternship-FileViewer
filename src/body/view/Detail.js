@@ -34,7 +34,7 @@ const Detail = (props) => {
             setWidth(width);
             setHeight(height);
         }else{
-            axios.get(`/api/getsource?message=${props.dirPath}/${props.fileInfo[0]}`, {responseType: 'arraybuffer'})
+            axios.get(`/api/getFile?message=${props.dirPath}/${props.fileInfo[0]}`, {responseType: 'arraybuffer'})
             .then((response) => {
                 const blob = new Blob(
                     [response.data],
@@ -43,7 +43,7 @@ const Detail = (props) => {
                 setUrl(URL.createObjectURL(blob));
 
             }).catch((error) => {
-                console.log(error);
+                alert("오류가 발생하였습니다.");
             });
 
         }

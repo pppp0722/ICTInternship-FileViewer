@@ -5,7 +5,6 @@ import Header from './header/Header';
 import Body from './body/Body';
 
 const Layout = () => {
-
     return(
         <Wrapper>
             <Header/>

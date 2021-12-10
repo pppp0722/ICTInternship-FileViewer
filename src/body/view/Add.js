@@ -1,15 +1,13 @@
 import React, {useState} from "react";
 import styled from "styled-components";
 import axios from "axios";
-import { useSelector, useDispatch } from "react-redux";
-import { setDir } from "../../redux/actions";
+import { useSelector} from "react-redux";
 
 import './components.css';
 
 const Add = (props) => {
     const currentDirPath = useSelector(state => state.dirReducer);
-    const dispatch = useDispatch();
-    const [dirName, setDirName] = useState();
+    const [dirName, setDirName] = useState("");
 
     const close = () => {
         props.setAdd(false);
@@ -75,6 +73,12 @@ const Add = (props) => {
         });
     }
 
+    const handleKeyPress = (e) => { // enter 입력 시 디렉토리 생성
+        if(e.key === "Enter"){
+            addDir();
+        }
+    };
+
     return (
         <Wrapper>
             <Inner>
@@ -98,7 +102,7 @@ const Add = (props) => {
                     <Text3>
                         디렉토리 생성
                     </Text3>
-                    <InputDirName type = "text" value = {dirName} onChange = {handleDirName}/>
+                    <InputDirName type = "text" value = {dirName} onChange = {handleDirName} onKeyPress = {handleKeyPress}/>
                     <ButtonSubmit onClick = {addDir}>
                         생성
                     </ButtonSubmit>

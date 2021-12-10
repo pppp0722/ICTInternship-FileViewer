@@ -48,7 +48,7 @@ back 버튼으로 부모 디렉토리로 이동할 수 있습니다.<br/><br/>
 <br/><br/><br/><br/>
 ## 💾Download
 다운로드 버튼을 클릭하여 열람하고 있는 파일을 다운로드 받을 수 있습니다.<br/><br/>
-<img src = "https://user-images.githubusercontent.com/60428537/133726234-7b0380c3-ed8f-402b-aa32-99e7611da3dc.PNG" width="100%"/>
+<img src = "https://user-images.githubusercontent.com/60428537/145530182-5907d2ac-6d26-4c87-b407-935db180b8f6.png" width="100%"/>
 <br/><br/><br/><br/>
 ## ➕add
 add 버튼을 클릭하면 여러가지 이미지, 동영상들을 한번에 업로드 하거나 새 디렉토리를 생성할 수 있는 모달 창을 띄웁니다.<br/><br/>

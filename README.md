@@ -62,35 +62,3 @@ view 에서도 아이콘 hover 시 삭제 버튼이 드러나며 디렉토리, �
 삭제 버튼 클릭 시 되 묻는 alert가 생성되고, 디렉토리 삭제 시 해당 디렉토리 명을 입력해야 삭제할 수 있습니다.<br/><br/>
 <img src = "https://user-images.githubusercontent.com/60428537/145524737-a0e19357-ef23-4611-b56a-75e9a61e58e0.png" width="50%"/>
 <br/><br/><br/><br/>
-## 🔊Audio View
-특정 메뉴는 오디오 파일들을 열람할 수 있습니다.<br/><br/>
-오디오 리스트 중 한 가지 오디오를 클릭하면 해당 오디오를 듣기, 저장, 지우기 등을 할 수 있습니다.<br/><br/>
-<img src = "https://user-images.githubusercontent.com/60428537/137057339-ca194723-4e93-42d4-b6ab-779e1a8df0f9.png" width="48%"/>  <img src = "https://user-images.githubusercontent.com/60428537/137057455-2e1d6508-53a9-4ebd-9296-7cc0e0c035e9.png" width="48%"/>
-<br/><br/><br/><br/>
-***
-# 개선 사항
-## ☝Page Number
-한 번에 너무 많은 컴포넌트가 로드되는 것을 방지하기 위하여 페이지 번호를 추가하였습니다.<br/><br/>
-가져온 파일리스트의 파일 개수에 따라 페이지 번호를 지정합니다. <br/><br/>
-페이지 번호를 선택하게 되면, 해당 번호의 출력되는 컴포넌트 개수만큼 slice하여 썸네일 컴포넌트를 호출하고<br/><br/>
-썸네일 컴포넌트 내부에서 해당 파일정보에 맞는 이미지를 Spring에 요청합니다. <br/><br/>
-프론트에서 요청할 때 보낸 message를 토대로 백엔드 로컬에서 이미지 및 동영상을 찾아 프론트에 전송하고 프론트에서 출력합니다.<br/><br/>
-<img src = "https://user-images.githubusercontent.com/60428537/135576643-30c45865-48c1-436a-bd5a-abaf0d0b9949.png" width="100%"/>
-<br/><br/><br/><br/>
-## ☝Create Thumbnail
-기존의 경우, 동영상 파일을 업로드하면 사용자가 직접 동영상에 대한 썸네일을 제작하여 업로드해야 했습니다.<br/><br/>
-이 경우 사용자 입장에서 번거롭고, 썸네일 파일의 이름을 잘못 업로드 하는경우 동영상에 접근이 불가했습니다.<br/><br/>
-사용자의 편의성을 고려하여 동영상 업로드 시 자동으로 해당 동영상에 대한 썸네일 이미지 파일을 생성하는 기능을 추가했습니다.<br/><br/>
-프론트에서 동영상 업로드 요청이 들어오면, 백엔드에서 썸네일 파일도 함께 생성하여 서버 디렉토리에 적재합니다. <br/><br/>
-<img src = "https://user-images.githubusercontent.com/60428537/136308168-e47c7ad2-6fea-4f43-964f-f8bddff1a061.png" width="48%"/>  <img src = "https://user-images.githubusercontent.com/60428537/136308366-6af639cf-4bf0-40be-aef3-07f2da37e322.png" width="48%"/>
-<br/><br/><br/><br/>
-## ☝Revoke Blob Url
-메모리 누수 현상이 발생하여 확인해본 결과 blob url이 더 이상 참조하지 않아도 메모리에 할당되어 있는 것을 확인했습니다.<br/><br/>
-따라서 React 함수형 컴포넌트에서 생명주기상 componentWillUnmout 함수가 실행되는 useEffect안에 return문에서<br/><br/>
-컴포넌트가 사라질 때 blob url을 메모리에서 해제시켜 메모리 누수를 방지했습니다.<br/><br/>
-<br/><br/><br/><br/>
-## ☝Unsuitable Extension
-적합하지 않은 확장자의 파일이 존재하는 경우 파일 이름을 보여주고, 클릭 시 삭제, 다운로드 기능만 사용할 수 있습니다.<br/><br/>
-<img src = "https://user-images.githubusercontent.com/60428537/138204710-d7b8d14d-d9fb-4d4e-b0e4-4a8f6838cc5f.png" width="48%"/>  <img src = "https://user-images.githubusercontent.com/60428537/138204774-f7a141e6-14e4-4fcf-b1fb-4a321e21cbce.png" width="48%"/>
-<img src = "https://user-images.githubusercontent.com/60428537/138204847-13a7cc47-e751-4b58-938e-ae406e22ab33.png" width="100%"/>
-<br/><br/><br/><br/>

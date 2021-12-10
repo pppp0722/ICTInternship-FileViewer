@@ -31,10 +31,11 @@ back 버튼으로 부모 디렉토리로 이동할 수 있습니다.<br/><br/>
 <img src = "https://user-images.githubusercontent.com/60428537/145524737-a0e19357-ef23-4611-b56a-75e9a61e58e0.png" width="50%"/>
 <br/><br/><br/><br/>
 ## 📖Detail View
-썸네일을 클릭하면 해당 이미지, 영상을 자세히볼 수 있고 다운로드도 받을 수 있는 모달 창을 띄웁니다.<br/><br/>
-과도하게 큰 이미지, 영상을 방지하기 위하여 최대 너비, 높이보다 큰 이미지의 경우 이미지 가로세로 비율에 맞게 줄여서 나타냅니다.<br/><br/>
-나머지 이미지, 영상은 소스의 크기를 파악하기 위하여 원본 픽셀로 나타내며 X 버튼을 클릭하여 모달창을 닫을 수 있습니다.<br/><br/>
-<img src = "https://user-images.githubusercontent.com/60428537/133726739-040dbf89-5187-40c2-b90f-b347ff6ed7db.PNG" width="48%"/>  <img src = "https://user-images.githubusercontent.com/60428537/133726689-d5ffa0ff-54e9-4c89-a908-658dadbfeed5.PNG" width="48%"/>
+아이콘을 클릭하면 해당 파일을 자세하게 열람할 수 있습니다.<br/><br/>
+이미지의 경우 확대&축소, 배경 색상 변경, 삭제, 다운로드 기능을 사용할 수 있습니다.<br/><br/>
+동영상, 오디오 파일은 재생, 삭제, 다운로드 기능을 사용할 수 있습니다.<br/><br/>
+나머지 파일은 삭제, 다운로드 기능을 사용할 수 있습니다.<br/><br/>
+<img src = "https://user-images.githubusercontent.com/60428537/145525042-eb338aa5-f890-4d91-9ae5-7ec6eeac9a47.png" width="48%"/>  <img src = "https://user-images.githubusercontent.com/60428537/133726689-d5ffa0ff-54e9-4c89-a908-658dadbfeed5.PNG" width="48%"/>
 <br/><br/><br/><br/>
 ## 🎨Change Background
 배경색과 이미지, 영상 소스의 색상이 비슷하여 식별이 힘든 상황을 방지하기 위하여 배경 색상을 변경할 수 있는 기능입니다.<br/><br/>

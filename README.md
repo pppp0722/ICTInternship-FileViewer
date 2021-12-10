@@ -18,7 +18,7 @@
 상단 header 에서는 현재 디렉토리 주소를 출력하고, 로그아웃 버튼이 존재합니다.<br/><br/>
 body의 좌측 side bar 에서는 모든 디렉토리를 tree 구조로 보여주며, 펼치거나 클릭하여 해당 디렉토리로 이동할 수 있습니다.<br/><br/>
 body의 우측 view 에서는 현재 디렉토리 내 모든 파일, 디렉토리를 아이콘으로 보여줍니다.<br/><br/>
-<img src = "https://user-images.githubusercontent.com/60428537/145522899-46dd540d-7d29-42f6-a1d9-73583a8e1571.png" width="100%"/>
+<img src = "https://user-images.githubusercontent.com/60428537/145524031-f1a5d9a6-f34b-4263-b578-96940136432a.png" width="100%"/>
 <br/><br/><br/><br/>
 ## 📁Storage
 저장소에서는 썸네일을 통해 해당 메뉴의 서버 디렉토리에 적재된 사진 및 영상 파일들을 보여줍니다.<br/><br/>

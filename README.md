@@ -40,7 +40,7 @@ back 버튼으로 부모 디렉토리로 이동할 수 있습니다.<br/><br/>
 ## 🎨Change Background
 배경색과 이미지, 영상 소스의 색상이 비슷하여 식별이 힘든 상황을 방지하기 위하여 배경 색상을 변경할 수 있는 기능입니다.<br/><br/>
 상단 3가지 버튼을 통하여 투명한 회색, 흰색, 검은색의 바탕으로 이미지, 영상을 열람할 수 있습니다.<br/><br/>
-<img src = "https://user-images.githubusercontent.com/60428537/133726572-60801089-cbf8-4ab7-af15-4c2fb4575d12.PNG" width="32%"/> <img src = "https://user-images.githubusercontent.com/60428537/133726539-18a87c9b-f28d-4aec-8194-47b3de4e523b.PNG" width="32%"/> <img src = "https://user-images.githubusercontent.com/60428537/133726481-c2f18d40-d277-47ad-885f-80a50831c195.PNG" width="32%"/>
+<img src = "https://user-images.githubusercontent.com/60428537/145525042-eb338aa5-f890-4d91-9ae5-7ec6eeac9a47.png" width="32%"/> <img src = "https://user-images.githubusercontent.com/60428537/133726539-18a87c9b-f28d-4aec-8194-47b3de4e523b.PNG" width="32%"/> <img src = "https://user-images.githubusercontent.com/60428537/133726481-c2f18d40-d277-47ad-885f-80a50831c195.PNG" width="32%"/>
 <br/><br/><br/><br/>
 ## 🔎Zoom In & Out
 이미지를 확대, 축소하여 열람할 수 있는 기능입니다.<br/><br/>

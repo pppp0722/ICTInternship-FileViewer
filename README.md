@@ -20,11 +20,14 @@ body의 좌측 side bar 에서는 모든 디렉토리를 tree 구조로 보여�
 body의 우측 view 에서는 현재 디렉토리 내 모든 파일, 디렉토리를 아이콘으로 보여줍니다.<br/><br/>
 <img src = "https://user-images.githubusercontent.com/60428537/145524031-f1a5d9a6-f34b-4263-b578-96940136432a.png" width="100%"/>
 <br/><br/><br/><br/>
-## 📁Storage
-저장소에서는 썸네일을 통해 해당 메뉴의 서버 디렉토리에 적재된 사진 및 영상 파일들을 보여줍니다.<br/><br/>
-배경이 흰색인 소스와 투명인 소스를 구분하기 위하여 이미지 뒤에 투명을 표시하는 background-image를 넣었습니다.<br/><br/>
-영상의 경우, 썸네일 위에 재생이 가능한 영상임을 표시하기 위해 재생 아이콘을 넣었습니다.<br/><br/>
-<img src = "https://user-images.githubusercontent.com/60428537/136310090-4189bb4b-e415-45a1-a86f-a115f59dd934.png" width="100%"/>
+## 📁View
+현재 디렉토리 내 모든 파일, 디렉토리를 아이콘 형식으로 출력합니다.<br/><br/>
+add 버튼으로 파일 업로드, 디렉토리 생성을 할 수 있습니다.<br/><br/>
+back 버튼으로 부모 디렉토리로 이동할 수 있습니다.<br/><br/>
+디렉토리 아이콘을 클릭하면 해당 디렉토리로 이동합니다.<br/><br/>
+파일 아이콘을 클릭하면 해당 파일을 자세히 볼 수 있는 Detail로 이동합니다.<br/><br/>
+아이콘 hover 시 삭제 버튼이 드러나며 디렉토리, 파일을 삭제할 수 있습니다.<br/><br/>
+<img src = "https://user-images.githubusercontent.com/60428537/145524191-910a5804-12f7-453a-8df7-52f8a846fefc.png" width="100%"/>
 <br/><br/><br/><br/>
 ## 📖Detail View
 썸네일을 클릭하면 해당 이미지, 영상을 자세히볼 수 있고 다운로드도 받을 수 있는 모달 창을 띄웁니다.<br/><br/>

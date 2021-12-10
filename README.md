@@ -27,8 +27,6 @@ back 버튼으로 부모 디렉토리로 이동할 수 있습니다.<br/><br/>
 디렉토리 아이콘을 클릭하면 해당 디렉토리로 이동합니다.<br/><br/>
 파일 아이콘을 클릭하면 해당 파일을 자세히 볼 수 있는 Detail로 이동합니다.<br/><br/>
 <img src = "https://user-images.githubusercontent.com/60428537/145524191-910a5804-12f7-453a-8df7-52f8a846fefc.png" width="100%"/><br/><br/>
-아이콘 hover 시 삭제 버튼이 드러나며 디렉토리, 파일을 삭제할 수 있습니다.<br/><br/>
-<img src = "https://user-images.githubusercontent.com/60428537/145524737-a0e19357-ef23-4611-b56a-75e9a61e58e0.png" width="50%"/>
 <br/><br/><br/><br/>
 ## 📖Detail View
 아이콘을 클릭하면 해당 파일을 자세하게 열람할 수 있습니다.<br/><br/>
@@ -58,9 +56,10 @@ add 버튼을 클릭하면 여러가지 이미지, 동영상들을 한번에 업
 <img src = "https://user-images.githubusercontent.com/60428537/145526804-a0ee3fbd-1631-4bf2-b438-965cc92ea1a8.png" width="100%"/>
 <br/><br/><br/><br/>
 ## 🗑Delete
-딜리트 버튼을 클릭하여 파일을 삭제할 수 있습니다.<br/><br/>
-동영상 파일의 경우 썸네일까지 한번에 삭제됩니다.<br/><br/>
-<img src = "https://user-images.githubusercontent.com/60428537/136172117-e75860c3-1d06-4a14-acf9-a9f2c48cc35e.png" width="48%"/>  <img src = "https://user-images.githubusercontent.com/60428537/136352348-917d00d9-759c-42d8-bc04-32daeacb2a0a.png" width="48%"/>
+detail에서 delete 버튼을 클릭하여 파일을 삭제할 수 있습니다.<br/><br/>
+<img src = "https://user-images.githubusercontent.com/60428537/136172117-e75860c3-1d06-4a14-acf9-a9f2c48cc35e.png" width="48%"/>  <img src = "https://user-images.githubusercontent.com/60428537/136352348-917d00d9-759c-42d8-bc04-32daeacb2a0a.png" width="48%"/><br/><br/>
+view 에서도 아이콘 hover 시 삭제 버튼이 드러나며 디렉토리, 파일을 삭제할 수 있습니다.<br/><br/>
+<img src = "https://user-images.githubusercontent.com/60428537/145524737-a0e19357-ef23-4611-b56a-75e9a61e58e0.png" width="50%"/>
 <br/><br/><br/><br/>
 ## 🔊Audio View
 특정 메뉴는 오디오 파일들을 열람할 수 있습니다.<br/><br/>

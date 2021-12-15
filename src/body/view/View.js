@@ -2,12 +2,12 @@ import React, {useState, useEffect} from "react";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
 import axios from "axios";
-import Thumbnail from "./Thumbnail";
+import Icon from "./Icon";
 
 const View = () => {
     const currentDirPath = useSelector(state => state.dirReducer);
     const [dirs, setDirs] = useState([]); // 디렉토리 리스트
-    const [thumbnails, setThumbnails] = useState([]); // 파일 리스트
+    const [icons, setIcons] = useState([]); // 파일 리스트
     const [preDir, setPreDir] = useState(""); // 다른 디렉토리 이동 시 자연스럽게 이동하기 위한 state
     const [added, setAdded] = useState([]); // 프론트에서 디렉토리 or 파일 추가 시 사용하는 state
     const addInfo = ["add", "add"];
@@ -27,7 +27,7 @@ const View = () => {
             }
 
             setDirs(dirInfos);
-            setThumbnails(fileInfos);
+            setIcons(fileInfos);
             setPreDir(currentDirPath);
         }).catch((error) => {
             alert("오류가 발생하였습니다.");
@@ -48,36 +48,36 @@ const View = () => {
                 preDirs.splice(i, 0, added[0]);
                 setDirs(preDirs); // 기존 dirs에 알파벳 순 위치에 넣어 줌
             }else{ // 파일 추가 시
-                let preThumbnails = thumbnails;
+                let preIcons = icons;
                 let i = 0;
                 for(let j = 0; j < added.length; j++){
-                    while(i < preThumbnails.length){
-                        if(added[j][0].toLowerCase() > preThumbnails[i][0].toLowerCase()) i++;
+                    while(i < preIcons.length){
+                        if(added[j][0].toLowerCase() > preIcons[i][0].toLowerCase()) i++;
                         else break;
                     }
-                    preThumbnails.splice(i, 0, added[j]);
+                    preIcons.splice(i, 0, added[j]);
                 }
-                setThumbnails(preThumbnails); // 추가 된 파일 모두 기존 thumbnails에 알파벳 순 위치에 넣어 줌
+                setIcons(preIcons); // 추가 된 파일 모두 기존 Icons에 알파벳 순 위치에 넣어 줌
             }
 
             setAdded([]); // 추가 했으니, added 초기화
         }
     },[added]);
 
-    // Thumbnail 중 add는 4개, 나머지는 2개 props 가짐
-    // dirPath: Thumbnail이 위치한 디렉토리 주소
+    // Icon 중 add는 4개, 나머지는 2개 props 가짐
+    // dirPath: Icon이 위치한 디렉토리 주소
     // fileInfo: {0: fileName, 1: fileType}
     // added, setAdded: 디렉토리, 파일 추가를 위한 props
     return(
         <Wrapper>
             <Inner>
-                <Thumbnail dirPath = {currentDirPath} fileInfo = {addInfo} added = {added} setAdded = {setAdded}/>
+                <Icon dirPath = {currentDirPath} fileInfo = {addInfo} added = {added} setAdded = {setAdded}/>
                 {currentDirPath !== "" ?
-                <Thumbnail dirPath = {currentDirPath} fileInfo = {backInfo}/> : null}
+                <Icon dirPath = {currentDirPath} fileInfo = {backInfo}/> : null}
                 {preDir === currentDirPath ? 
-                dirs.map((dirInfo) => (<Thumbnail dirPath = {currentDirPath} fileInfo = {dirInfo}/>)) : null}
+                dirs.map((dirInfo) => (<Icon dirPath = {currentDirPath} fileInfo = {dirInfo}/>)) : null}
                 {preDir === currentDirPath ? 
-                thumbnails.map((fileInfo) => (<Thumbnail dirPath = {currentDirPath} fileInfo = {fileInfo}/>)) : null}
+                icons.map((fileInfo) => (<Icon dirPath = {currentDirPath} fileInfo = {fileInfo}/>)) : null}
             </Inner>
         </Wrapper>
     );

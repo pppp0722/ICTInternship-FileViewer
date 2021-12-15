@@ -85,11 +85,11 @@ const Add = (props) => {
                 <Top>
                     <ButtonClose onClick = {close}>X</ButtonClose>
                     <Text1>
-                        add at resources/{currentDirPath}
+                        add to resources/{currentDirPath}
                     </Text1>
                 </Top>
                 <FormUpload>
-                    <div class="filebox">
+                    <div class="filebox">  
                         <label for="ex_file">업로드</label>
                         <input type="file" id="ex_file" multiple onChange = {(e) => onSaveFile(e)}/>
                     </div>
@@ -102,7 +102,7 @@ const Add = (props) => {
                     <Text3>
                         디렉토리 생성
                     </Text3>
-                    <InputDirName type = "text" value = {dirName} onChange = {handleDirName} onKeyPress = {handleKeyPress}/>
+                    <InputDirName type = "text" value = {dirName} placeholder = "디렉토리 명" onChange = {handleDirName} onKeyPress = {handleKeyPress}/>
                     <ButtonSubmit onClick = {addDir}>
                         생성
                     </ButtonSubmit>

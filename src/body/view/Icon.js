@@ -13,7 +13,7 @@ import PngFile from '../../images/file.png';
 import PngBack from '../../images/back.png';
 import PngAdd from '../../images/add.png';
 
-const Thumbnail = (props) => {
+const Icon = (props) => {
     const dispatch = useDispatch();
 
     const [image, setImage] = useState(); // 이미지 파일인 경우 사용하는 state
@@ -65,7 +65,7 @@ const Thumbnail = (props) => {
         };
     },[props.dirPath, props.fileInfo]);
 
-    const thumbnailClick = () => {
+    const iconClick = () => {
         if(props.fileInfo[1] === 'back'){ // back 클릭 시 상위 폴더로 이동
             let splited = props.dirPath.split("/");
             splited.pop()
@@ -134,7 +134,7 @@ const Thumbnail = (props) => {
 
     return(
         <Container display = {display}>
-            <Wrapper onClick = {thumbnailClick} onMouseOver = {handleMouseOver} onMouseOut = {handleMouseOut}>
+            <Wrapper onClick = {iconClick} onMouseOver = {handleMouseOver} onMouseOut = {handleMouseOut}>
                 <Image src = {image}/>
                 <Name type = {props.fileInfo[1]}>
                     {props.fileInfo[0]}
@@ -151,7 +151,7 @@ const Thumbnail = (props) => {
 }
 
 
-export default Thumbnail;
+export default Icon;
 
 const Container = styled.div`
     display: ${props => props.display};

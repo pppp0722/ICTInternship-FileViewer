@@ -1,4 +1,4 @@
-# ICTInternship-FileViewer(React + Spring Boot)
+# ICTInternship-FileViewer(React + Spring)
 ### ICT Internship(2021) file viewer website front-end & back-end
 ***
 # File Viewer Website
